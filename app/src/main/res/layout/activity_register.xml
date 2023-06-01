@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".data.list.RegisterActivity">
 
     <fragment
         android:id="@+id/fragment_container"
         android:name="io.townsq.pandora.data.register.PersonalInfoFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:navGraph="@navigation/main_nav_graph"
+        app:navGraph="@navigation/nav_graph"
         tools:layout="@layout/fragment_personal_info"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,8 @@
-package io.townsq.pandora
+package io.townsq.pandora.data.list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.townsq.pandora.R
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

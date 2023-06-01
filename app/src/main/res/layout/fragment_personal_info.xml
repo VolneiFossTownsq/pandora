@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -50,7 +50,8 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/firstNameRegister"
@@ -63,7 +64,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/userNameRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/userNameRegister"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/lastNameRegister"
@@ -76,7 +78,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameRegister"
+        tools:ignore="VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btnContinue"
@@ -87,7 +90,8 @@
         android:text="Continue"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:ignore="VisualLintButtonSize" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

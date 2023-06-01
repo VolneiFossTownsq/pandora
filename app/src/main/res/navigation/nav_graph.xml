@@ -18,6 +18,15 @@
         android:id="@+id/roleSelectionFragment"
         android:name="io.townsq.pandora.data.register.RoleSelectionFragment"
         android:label="fragment_role_selection"
-        tools:layout="@layout/fragment_role_selection" />
+        tools:layout="@layout/fragment_role_selection" >
+        <action
+            android:id="@+id/action_roleSelectionFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="io.townsq.pandora.data.register.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" />
 
 </navigation>
