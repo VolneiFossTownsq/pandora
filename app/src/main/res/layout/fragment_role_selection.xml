@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".data.login.RoleSelectionFragment">
+
+    <ImageView
+        android:id="@+id/backToPersonalInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="66"
+        android:progressTint="#E24C44"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/backToPersonalInfo"
+        app:layout_constraintTop_toBottomOf="@+id/backToPersonalInfo" />
+
+    <TextView
+        android:id="@+id/titleRoleSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="What does they do in your company?"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/backToPersonalInfo"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/textSelectRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_input_role"
+        android:padding="16dp"
+        android:text="Select your role"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintTop_toBottomOf="@+id/titleRoleSelection"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+    <ImageView
+        android:id="@+id/roleSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_drop_down_24"
+        android:onClick="showPopupMenu"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textSelectRole"
+        app:layout_constraintEnd_toEndOf="@+id/textSelectRole"
+        app:layout_constraintTop_toTopOf="@+id/textSelectRole" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phrase"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/textSelectRole"
+        app:layout_constraintStart_toStartOf="@+id/textSelectRole"
+        app:layout_constraintTop_toBottomOf="@+id/textSelectRole" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_continue"
+        android:text="Continue"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/titleRoleSelection"
+        app:layout_constraintStart_toStartOf="@+id/textSelectRole" />
+</androidx.constraintlayout.widget.ConstraintLayout>
