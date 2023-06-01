@@ -27,6 +27,15 @@
         android:id="@+id/passwordFragment"
         android:name="io.townsq.pandora.data.register.PasswordFragment"
         android:label="fragment_password"
-        tools:layout="@layout/fragment_password" />
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="io.townsq.pandora.data.register.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" />
 
 </navigation>
