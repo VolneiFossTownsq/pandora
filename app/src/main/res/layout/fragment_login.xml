@@ -60,6 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Forgot my password"
+        android:clickable="true"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="@+id/inputUserPassword"
         app:layout_constraintStart_toStartOf="@+id/inputUserPassword"
@@ -73,15 +74,15 @@
         android:gravity="center"
         android:text="I don't have acess yet"
         android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnContinue" />
+        app:layout_constraintBottom_toTopOf="@+id/login" />
 
     <Button
-        android:id="@+id/btnContinue"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_login"
         android:layout_margin="16dp"
-        android:text="Continue"
+        android:text="Login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
