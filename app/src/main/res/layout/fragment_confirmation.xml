@@ -28,17 +28,17 @@
         app:layout_constraintTop_toBottomOf="@+id/backToPassword" />
 
     <Button
-        android:id="@+id/goToLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_continue"
-        android:shadowColor="#E24C44"
+        android:backgroundTint="#E24C44"
         android:text="Login"
-        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:cornerRadius="0dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
