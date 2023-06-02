@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 
 class RoleSelectionFragment : Fragment() {
 
+    var textField: AutoCompleteTextView? = null
     var returnToPersonalInfo: ImageView? = null
     var goToPassword: Button? = null
 
@@ -18,8 +21,17 @@ class RoleSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view =  inflater.inflate(R.layout.fragment_role_selection, container, false)
+
+        textField = view.findViewById(R.id.autoCompleteTextView)
+        setItensDropMenu()
+
+        setupView(view)
+
+        return view
+    }
+
+    private fun setupView(view:View){
         returnToPersonalInfo = view?.findViewById(R.id.backToPersonalInfo)
         returnToPersonalInfo?.setOnClickListener {
             backToPersonalInfo()
@@ -28,15 +40,19 @@ class RoleSelectionFragment : Fragment() {
         goToPassword?.setOnClickListener {
             goToPassword()
         }
-
-        return view
     }
 
-    fun backToPersonalInfo(){
+    private fun setItensDropMenu(){
+        val items = listOf("Admin", "Manager", "Employee")
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, R.id.itemTextView, items)
+        textField?.setAdapter(adapter)
+    }
+
+    private fun backToPersonalInfo(){
         findNavController().navigate(R.id.action_roleSelectionFragment_to_personalInfoFragment)
     }
 
-    fun goToPassword(){
+    private fun goToPassword(){
         findNavController().navigate(R.id.action_roleSelectionFragment_to_passwordFragment)
     }
 

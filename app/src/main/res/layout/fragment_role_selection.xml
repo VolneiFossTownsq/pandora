@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:background="#F0F0F0"
+    android:padding="16dp"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -22,9 +21,9 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:progress="66"
         android:progressTint="@color/e24c44"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/backToPersonalInfo"
         app:layout_constraintTop_toBottomOf="@+id/backToPersonalInfo" />
 
@@ -39,48 +38,43 @@
         app:layout_constraintStart_toStartOf="@+id/backToPersonalInfo"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
-    <TextView
-        android:id="@+id/textSelectRole"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/bg_input_register"
-        android:padding="16dp"
-        android:text="@string/select_your_role"
-        app:layout_constraintTop_toBottomOf="@+id/titleRoleSelection"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/titleRoleSelection">
 
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Select Your Role"
+            android:inputType="none"
+            app:simpleItems="@array/item_list" />
 
-    <ImageView
-        android:id="@+id/roleSelection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_drop_down_24"
-        android:onClick="showPopupMenu"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textSelectRole"
-        app:layout_constraintEnd_toEndOf="@+id/textSelectRole"
-        app:layout_constraintTop_toTopOf="@+id/textSelectRole" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/phrase"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textSelectRole"
-        app:layout_constraintStart_toStartOf="@+id/textSelectRole"
-        app:layout_constraintTop_toBottomOf="@+id/textSelectRole" />
+        android:text="@string/phrase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textField" />
 
     <Button
         android:id="@+id/goToPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#E24C44"
+        android:padding="16dp"
         android:text="@string/continue_register"
         android:textAllCaps="true"
         android:textStyle="bold"
         app:cornerRadius="0dp"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

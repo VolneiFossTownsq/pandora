@@ -17,5 +17,5 @@ class RegisterActivity : AppCompatActivity() {
         navigationController.setGraph(R.navigation.nav_graph)
     }
 
-    fun showPopupMenu(view: View) {}
+
 }

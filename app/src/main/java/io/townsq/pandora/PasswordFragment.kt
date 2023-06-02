@@ -21,6 +21,13 @@ class PasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_password, container, false)
+
+        setupView(view)
+
+        return view
+    }
+
+    private fun setupView(view: View){
         backToRoleSelection = view.findViewById(R.id.backToRoleSelection)
         backToRoleSelection?.setOnClickListener {
             backToRoleSelection()
@@ -30,16 +37,13 @@ class PasswordFragment : Fragment() {
         goToConfirmation?.setOnClickListener {
             onClickToConfirmation()
         }
-
-
-        return view
     }
 
-    fun backToRoleSelection(){
+    private fun backToRoleSelection(){
         findNavController().navigate(R.id.action_passwordFragment_to_roleSelectionFragment)
     }
 
-    fun onClickToConfirmation(){
+    private fun onClickToConfirmation(){
         findNavController().navigate(R.id.action_passwordFragment_to_confirmationFragment)
     }
 
