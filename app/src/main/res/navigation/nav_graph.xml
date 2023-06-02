@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/personalInfoFragment">
+
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="io.townsq.pandora.PersonalInfoFragment"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" >
+        <action
+            android:id="@+id/action_personalInfoFragment_to_roleSelectionFragment"
+            app:destination="@id/roleSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/roleSelectionFragment"
+        android:name="io.townsq.pandora.RoleSelectionFragment"
+        android:label="fragment_role_selection"
+        tools:layout="@layout/fragment_role_selection" >
+        <action
+            android:id="@+id/action_roleSelectionFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
+        <action
+            android:id="@+id/action_roleSelectionFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="io.townsq.pandora.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_roleSelectionFragment"
+            app:destination="@id/roleSelectionFragment" />
+        <action
+            android:id="@+id/action_passwordFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="io.townsq.pandora.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" >
+        <action
+            android:id="@+id/action_confirmationFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+
+</navigation>

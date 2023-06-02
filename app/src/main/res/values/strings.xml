@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">pandora</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phrase_personal_Info">Share information about your employee</string>
+    <string name="username">Username</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="continue_register">continue</string>
+    <string name="phrase">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
+    <string name="phrase_role_selection">What does they do in your company?</string>
+    <string name="select_your_role">Select your role</string>
+    <string name="continue_to_registe">Continue</string>
+    <string name="phrase_confirmation">The user has been successfully registered to <font color="#E24C44">Pandora</font></string>
+    <string name="login">Login</string>
 </resources>
