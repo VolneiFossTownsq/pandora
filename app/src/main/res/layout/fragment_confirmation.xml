@@ -32,7 +32,7 @@
         android:id="@+id/goToLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E24C44"
+        android:backgroundTint="@color/rouge_red"
         android:text="@string/login"
         android:textAllCaps="true"
         android:textStyle="bold"
