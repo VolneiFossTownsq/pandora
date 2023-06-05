@@ -15,7 +15,6 @@ class PasswordFragment : Fragment() {
     private var backToRoleSelection: ImageView? = null
     private var goToConfirmation: Button? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
