@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0"
+    android:background="@color/light_red"
     android:padding="16dp"
     tools:context=".RegisterActivity">
 
@@ -69,7 +69,7 @@
         android:id="@+id/goToPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E24C44"
+        android:backgroundTint="@color/rouge_red"
         android:padding="16dp"
         android:text="@string/continue_register"
         android:textAllCaps="true"
