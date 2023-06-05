@@ -23,24 +23,26 @@ class RoleSelectionFragment : Fragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_role_selection, container, false)
 
+        returnToPersonalInfo = view.findViewById(R.id.backToPersonalInfo)
+        goToPassword = view.findViewById(R.id.goToPassword)
+
         setupView(view)
 
         return view
     }
 
     private fun setupView(view:View){
-        returnToPersonalInfo = view?.findViewById(R.id.backToPersonalInfo)
+
         returnToPersonalInfo?.setOnClickListener {
             backToPersonalInfo()
         }
-        goToPassword = view?.findViewById(R.id.goToPassword)
+
         goToPassword?.setOnClickListener {
             goToPassword()
         }
 
         textField = view.findViewById(R.id.autoCompleteTextView)
         setItensDropMenu()
-
     }
 
     private fun setItensDropMenu(){
@@ -56,6 +58,4 @@ class RoleSelectionFragment : Fragment() {
     private fun goToPassword(){
         findNavController().navigate(R.id.action_roleSelectionFragment_to_passwordFragment)
     }
-
-
 }

@@ -23,18 +23,20 @@ class PersonalInfoFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_personal_info, container, false)
 
-        setupView(view)
+        returnToLogin = view.findViewById(R.id.backToLogin)
+        goToRoleSelection = view.findViewById(R.id.goToRoleSelection)
+
+        setupView()
 
         return view
     }
 
-    private fun setupView(view: View) {
-        returnToLogin = view.findViewById(R.id.backToLogin)
+    private fun setupView() {
+
         returnToLogin?.setOnClickListener {
             Toast.makeText(activity, "Return Login", Toast.LENGTH_SHORT).show()
         }
 
-        goToRoleSelection = view.findViewById<Button>(R.id.goToRoleSelection)
         goToRoleSelection?.setOnClickListener {
             onClickToRoleSelection()
         }
@@ -44,5 +46,4 @@ class PersonalInfoFragment : Fragment() {
         Log.d("PersonalInfoFragment", "Button clicked")
         findNavController().navigate(R.id.action_personalInfoFragment_to_roleSelectionFragment)
     }
-
 }

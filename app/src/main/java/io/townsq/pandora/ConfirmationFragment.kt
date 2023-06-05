@@ -22,18 +22,20 @@ class ConfirmationFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_confirmation, container, false)
 
-        setupView(view)
+        backToPassword = view.findViewById(R.id.backToPassword)
+        goToLogin = view.findViewById(R.id.goToLogin)
+
+        setupView()
 
         return view
     }
 
-    private fun setupView(view: View) {
-        backToPassword = view?.findViewById(R.id.backToPassword)
+    private fun setupView() {
+
         backToPassword?.setOnClickListener {
             backToRoleSelection()
         }
 
-        goToLogin = view?.findViewById(R.id.goToLogin)
         goToLogin?.setOnClickListener {
             login()
         }
@@ -46,6 +48,4 @@ class ConfirmationFragment : Fragment() {
     private fun login() {
         Toast.makeText(activity, "Login", Toast.LENGTH_SHORT).show()
     }
-
-
 }
