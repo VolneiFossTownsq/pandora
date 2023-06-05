@@ -1,8 +1,7 @@
 package io.townsq.pandora
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -16,6 +15,4 @@ class RegisterActivity : AppCompatActivity() {
 
         navigationController.setGraph(R.navigation.nav_graph)
     }
-
-
 }
