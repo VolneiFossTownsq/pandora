@@ -6,4 +6,5 @@
     <string name="i_don_t_have_acess_yet">I don\'t have acess yet</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="title_username">Username</string>
 </resources>
