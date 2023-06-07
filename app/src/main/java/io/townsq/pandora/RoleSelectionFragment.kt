@@ -26,12 +26,12 @@ class RoleSelectionFragment : Fragment() {
         returnToPersonalInfo = view.findViewById(R.id.backToPersonalInfo)
         goToPassword = view.findViewById(R.id.goToPassword)
 
-        setupView(view)
+        setupView()
 
         return view
     }
 
-    private fun setupView(view:View){
+    private fun setupView(){
 
         returnToPersonalInfo?.setOnClickListener {
             backToPersonalInfo()
@@ -41,7 +41,7 @@ class RoleSelectionFragment : Fragment() {
             goToPassword()
         }
 
-        textField = view.findViewById(R.id.autoCompleteTextView)
+        textField = view?.findViewById(R.id.autoCompleteTextView)
         setItensDropMenu()
     }
 
