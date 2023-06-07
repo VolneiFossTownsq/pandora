@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="phrase_personal_Info">Share information about your employee</string>
+    <string name="username">Username</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
     <string name="i_don_t_have_acess_yet">I don\'t have acess yet</string>
     <string name="login">Login</string>
 </resources>
