@@ -26,25 +26,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_input_login"
-        android:hint="Username"
+        android:hint="@string/title_username"
         android:textColorHint="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/logoPandora"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoPandora" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:endIconMode="password_toggle"
         android:background="@color/white"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputUserName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:hint="@string/password"/>
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,6 +55,7 @@
         android:id="@+id/recoveryPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         android:text="@string/forgot_my_password"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
@@ -65,10 +69,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:text="@string/i_don_t_have_acess_yet"
         app:layout_constraintBottom_toTopOf="@+id/login"
-        android:focusable="true" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login"
