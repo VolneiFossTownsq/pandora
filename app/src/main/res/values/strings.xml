@@ -12,4 +12,8 @@
     <string name="continue_to_registe">Continue</string>
     <string name="phrase_confirmation">The user has been successfully registered to <font color="#E24C44">Pandora</font></string>
     <string name="login">Login</string>
+    <string name="forgot_my_password">Forgot my password</string>
+    <string name="i_don_t_have_acess_yet">I don\'t have acess yet</string>
+    <string name="password">Password</string>
+    <string name="title_username">Username</string>
 </resources>
