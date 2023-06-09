@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/f0f0f0"
+    android:background="@color/light_red"
     android:padding="16dp"
-    tools:context=".AuthenticationActivity">
+    tools:context=".ui.AuthenticationActivity">
 
     <ImageView
         android:id="@+id/logoPandora"

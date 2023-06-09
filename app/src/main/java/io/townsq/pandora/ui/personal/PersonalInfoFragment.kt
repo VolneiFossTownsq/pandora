@@ -1,4 +1,4 @@
-package io.townsq.pandora
+package io.townsq.pandora.ui.personal
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import io.townsq.pandora.R
 
 class PersonalInfoFragment : Fragment() {
 

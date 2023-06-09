@@ -1,14 +1,14 @@
-package io.townsq.pandora
+package io.townsq.pandora.ui.password
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import io.townsq.pandora.R
 
 class PasswordFragment : Fragment() {
 
@@ -29,7 +29,7 @@ class PasswordFragment : Fragment() {
         return view
     }
 
-    private fun setupView(){
+    private fun setupView() {
 
         backToRoleSelection?.setOnClickListener {
             backToRoleSelection()
@@ -40,11 +40,11 @@ class PasswordFragment : Fragment() {
         }
     }
 
-    private fun backToRoleSelection(){
+    private fun backToRoleSelection() {
         findNavController().navigate(R.id.action_passwordFragment_to_roleSelectionFragment)
     }
 
-    private fun onClickToConfirmation(){
+    private fun onClickToConfirmation() {
         findNavController().navigate(R.id.action_passwordFragment_to_confirmationFragment)
     }
 }

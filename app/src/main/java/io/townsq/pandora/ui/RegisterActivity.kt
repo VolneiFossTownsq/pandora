@@ -1,8 +1,9 @@
-package io.townsq.pandora
+package io.townsq.pandora.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import io.townsq.pandora.R
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
