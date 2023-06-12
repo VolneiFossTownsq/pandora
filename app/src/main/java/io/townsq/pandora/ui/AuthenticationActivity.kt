@@ -3,10 +3,15 @@ package io.townsq.pandora.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.townsq.pandora.R
+import io.townsq.pandora.databinding.ActivityAuthenticationBinding
 
 class AuthenticationActivity : AppCompatActivity() {
+
+    private var binding: ActivityAuthenticationBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authentication)
+        binding = ActivityAuthenticationBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
     }
 }
