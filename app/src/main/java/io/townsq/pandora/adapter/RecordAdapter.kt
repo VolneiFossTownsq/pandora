@@ -54,8 +54,8 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
 
         fun bind(record: Record) {
             imgRegister.setImageResource(iconForEachRecordType(record.recordType))
-            dateRegister.text = record.id
-            infoDriver.text = record.driver.firstName
+            dateRegister.text = record.recordDate.toString()
+            infoDriver.text = record.vehicle.driver.firstName
             infoVehicle.text = record.vehicle.name
         }
 
