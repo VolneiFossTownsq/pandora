@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pandora">Pandora</string>
+    <string name="app_name">pandora</string>
+    <string name="title_pandora">Pandora</string>
+    <string name="action_shift">Shift</string>
+    <string name="action_gas">Gas</string>
+    <string name="action_maintence">Maintence</string>
+    <string name="title_vehicle">Fiorino 2018</string>
+    <string name="title_driver">Driver: Jairo Ceazza</string>
+    <string name="title_date_register">06/06/23 – 07:00 AM</string>
 </resources>
