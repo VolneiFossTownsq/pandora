@@ -7,18 +7,18 @@ import io.townsq.pandora.data.Driver
 import io.townsq.pandora.data.Record
 import io.townsq.pandora.data.RecordType
 import io.townsq.pandora.data.Vehicle
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.util.Calendar
 import java.util.Date
-import java.util.Locale
+
 
 class FeedViewModel : ViewModel() {
 
 
     private val _recordsLiveData = MutableLiveData<List<Record>>()
     val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
+
+    private val _filteredRecords: MutableLiveData<List<Record>?> = MutableLiveData(getMockRecords())
+    val filteredRecords: MutableLiveData<List<Record>?> = _filteredRecords
+
 
     init {
         val mockRecords = getMockRecords()
@@ -53,5 +53,13 @@ class FeedViewModel : ViewModel() {
                 Date(currentTime)
             ),
         )
+    }
+
+    fun filterRecord(query: String) {
+        val filteredList = recordsLiveData.value ?.filter { record ->
+            record.vehicle.name.contains(query, ignoreCase = true) ||
+                    record.vehicle.driver.firstName.contains(query, ignoreCase = true)
+        }
+        _filteredRecords.value = filteredList
     }
 }
