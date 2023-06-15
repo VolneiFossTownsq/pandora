@@ -2,17 +2,18 @@ package io.townsq.pandora.ui.feed
 
 import android.os.Bundle
 import android.widget.Button
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import io.townsq.pandora.R
 import io.townsq.pandora.adapter.RecordAdapter
 import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.databinding.ActivityFeedBinding
 
 class FeedActivity : AppCompatActivity() {
 
+    private var binding: ActivityFeedBinding? = null
     private var recyclerView: RecyclerView? = null
     private var feedViewModel: FeedViewModel? = null
     private var recordAdapter: RecordAdapter? = null
@@ -24,25 +25,33 @@ class FeedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feed)
+        binding = ActivityFeedBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = binding?.recyclerView
         recordAdapter = RecordAdapter()
         recyclerView?.adapter = recordAdapter
 
-        searchView = findViewById(R.id.searchView)
+        searchView = binding?.searchView
 
-        maintenanceButton = findViewById(R.id.maintenance)
-        shiftButton = findViewById(R.id.shift)
-        gasButton = findViewById(R.id.gas)
+        maintenanceButton = binding?.maintenance
+        shiftButton = binding?.shift
+        gasButton = binding?.gas
 
         feedViewModel = ViewModelProvider(this)[FeedViewModel::class.java]
 
-        feedViewModel?.recordsLiveData?.observe(this, Observer { records ->
+        feedViewModel?.recordsLiveData?.observe(this) { records ->
             recordAdapter?.setRecords(records)
-        })
+        }.also {
+            feedViewModel?.filteredRecords?.observe(this) { filteredList ->
+                if (filteredList != null) {
+                    recordAdapter?.setRecords(filteredList)
+                }
+            }
+        }
 
         onClickFilter()
+        setupSearchView()
     }
 
     private fun onClickFilter() {
@@ -58,5 +67,22 @@ class FeedActivity : AppCompatActivity() {
             recordAdapter?.filterByRecordType(RecordType.GAS)
 
         }
+    }
+
+    private fun setupSearchView() {
+        searchView?.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let {
+                        feedViewModel?.filterRecord(it)
+                    }
+                    return true
+                }
+            }
+        )
     }
 }
