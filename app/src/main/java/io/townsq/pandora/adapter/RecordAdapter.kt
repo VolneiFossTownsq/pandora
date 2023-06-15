@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
 import io.townsq.pandora.data.Record
 import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.databinding.ListItemBinding
 
 class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
+    private var binding: ListItemBinding? = null
     private var record: List<Record> = listOf()
-    private  var recordFilter = ArrayList<Record>()
+    private var recordFilter = ArrayList<Record>()
 
     init {
         recordFilter.addAll(record)
@@ -32,10 +34,8 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegisterViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item, parent, false)
-
-        return RegisterViewHolder(view)
+        binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return RegisterViewHolder(binding!!.root)
     }
 
     override fun getItemCount(): Int = record.size
@@ -47,10 +47,10 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
 
     inner class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private var imgRegister: ImageView = view.findViewById(R.id.imgRegister)
-        private var dateRegister: TextView = view.findViewById(R.id.dateRegister)
-        private var infoVehicle: TextView = view.findViewById(R.id.infoVehicle)
-        private var infoDriver: TextView = view.findViewById(R.id.infoDriver)
+        private var imgRegister: ImageView = binding!!.imgRegister
+        private var dateRegister: TextView = binding!!.dateRegister
+        private var infoVehicle: TextView = binding!!.infoVehicle
+        private var infoDriver: TextView = binding!!.infoDriver
 
         fun bind(record: Record) {
             imgRegister.setImageResource(iconForEachRecordType(record.recordType))
