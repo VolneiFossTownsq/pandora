@@ -14,22 +14,39 @@ import io.townsq.pandora.databinding.ListItemBinding
 class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
     private var binding: ListItemBinding? = null
-    private var record: List<Record> = listOf()
-    private var recordFilter = ArrayList<Record>()
+    private var recordList: List<Record> = listOf()
+    private var filteredList: MutableList<Record> = mutableListOf()
+    private val appliedFilters: MutableSet<RecordType> = mutableSetOf()
 
     init {
-        recordFilter.addAll(record)
+        filteredList.addAll(recordList)
     }
 
-    fun filterByRecordType(recordType: RecordType) {
-        record = recordFilter.filter { it.recordType == recordType }
+    fun addFilter(recordType: RecordType) {
+        appliedFilters.add(recordType)
+        applyFilters()
+    }
+
+    fun removeFilter(recordType: RecordType) {
+        appliedFilters.remove(recordType)
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        filteredList.clear()
+        for (record in recordList) {
+            if (appliedFilters.isEmpty() || appliedFilters.contains(record.recordType)) {
+                filteredList.add(record)
+            }
+        }
         notifyDataSetChanged()
     }
 
+
     fun setRecords(newRecords: List<Record>) {
-        record = newRecords
-        recordFilter.clear()
-        recordFilter.addAll(newRecords)
+        recordList = newRecords
+        filteredList.clear()
+        filteredList.addAll(newRecords)
         notifyDataSetChanged()
     }
 
@@ -38,10 +55,10 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         return RegisterViewHolder(binding!!.root)
     }
 
-    override fun getItemCount(): Int = record.size
+    override fun getItemCount(): Int = filteredList.size
 
     override fun onBindViewHolder(holder: RegisterViewHolder, position: Int) {
-        val currentItem = record[position]
+        val currentItem = filteredList[position]
         holder.bind(currentItem)
     }
 
