@@ -8,6 +8,7 @@ import io.townsq.pandora.data.Record
 import io.townsq.pandora.data.RecordType
 import io.townsq.pandora.data.Vehicle
 import java.util.Date
+import kotlin.time.Duration.Companion.days
 
 
 class FeedViewModel : ViewModel() {
@@ -30,33 +31,58 @@ class FeedViewModel : ViewModel() {
 
         val currentTime = Date().time
 
+
         return listOf(
             Record(
                 "1",
                 RecordType.MAINTENANCE,
-                Vehicle("1", "Carro 1", "ABC123", Driver("1", "João", "Silva", 123456)),
+                Vehicle("1", "Lance EVO", "ABC123", Driver("1", "João", "Silva", 123456)),
                 Date(currentTime)
             ),
             Record(
                 "2",
                 RecordType.SHIFT_START,
-                Vehicle("2", "Carro 2", "DEF456", Driver("2", "Maria", "Souza", 654321)),
+                Vehicle("2", "Ralliart", "DEF456", Driver("2", "Maria", "Souza", 654321)),
                 Date(currentTime)
             ),
             Record(
                 "3",
                 RecordType.GAS,
                 Vehicle(
-                    "3", "Carro 3", "GHI789",
-                    Driver("3", "Pedro", "Santos", 987654)
+                    "3", "Civic", "GHI789", Driver("3", "Pedro", "Souza", 987654)
                 ),
                 Date(currentTime)
             ),
+            Record(
+                "4",
+                RecordType.MAINTENANCE,
+                Vehicle(
+                    "4", "Jetta", "GHI789", Driver("4", "Eduarda", "Santos", 987654)
+                ),
+                Date(currentTime),
+
+                ),
+            Record(
+                "5",
+                RecordType.SHIFT_START,
+                Vehicle(
+                    "5", "Skyline", "GHI789", Driver("5", "Jorge", "Lima", 987654)
+                ),
+                Date(currentTime)
+            ),
+            Record(
+                "6",
+                RecordType.GAS,
+                Vehicle(
+                    "6", "350Z", "GHI789", Driver("6", "Jessica", "Pereira", 987654)
+                ),
+                Date(currentTime)
+            )
         )
     }
 
     fun filterRecord(query: String) {
-        val filteredList = recordsLiveData.value ?.filter { record ->
+        val filteredList = recordsLiveData.value?.filter { record ->
             record.vehicle.name.contains(query, ignoreCase = true) ||
                     record.vehicle.driver.firstName.contains(query, ignoreCase = true)
         }
