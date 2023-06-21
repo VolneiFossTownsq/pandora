@@ -17,14 +17,37 @@ class FeedViewModel : ViewModel() {
     private val _recordsLiveData = MutableLiveData<List<Record>>()
     val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
 
-    private val _filteredRecords: MutableLiveData<List<Record>?> = MutableLiveData(getMockRecords())
-    val filteredRecords: MutableLiveData<List<Record>?> = _filteredRecords
+    private val _filteredRecordsLiveData = MutableLiveData<List<Record>?>()
+    val filteredRecordsLiveData: MutableLiveData<List<Record>?> = _filteredRecordsLiveData
 
+    private val appliedFilters: MutableSet<RecordType> = mutableSetOf()
 
     init {
         val mockRecords = getMockRecords()
         _recordsLiveData.value = mockRecords
+        applyFilters()
     }
+
+    fun addFilter(recordType: RecordType) {
+        appliedFilters.add(recordType)
+        applyFilters()
+    }
+
+    fun removeFilter(recordType: RecordType) {
+        appliedFilters.remove(recordType)
+        applyFilters()
+    }
+
+    private fun applyFilters() {
+        val allRecords = _recordsLiveData.value
+        val filteredRecords = if (appliedFilters.isEmpty()) {
+            allRecords
+        } else {
+            allRecords?.filter { appliedFilters.contains(it.recordType) }
+        }
+        _filteredRecordsLiveData.value = filteredRecords
+    }
+
 
 
     private fun getMockRecords(): List<Record> {
@@ -83,9 +106,15 @@ class FeedViewModel : ViewModel() {
 
     fun filterRecord(query: String) {
         val filteredList = recordsLiveData.value?.filter { record ->
-            record.vehicle.name.contains(query, ignoreCase = true) ||
-                    record.vehicle.driver.firstName.contains(query, ignoreCase = true)
+            val nameMatchesQuery = record.vehicle.name.contains(query, ignoreCase = true)
+            val firstNameMatchesQuery = record.vehicle.driver.firstName.contains(query, ignoreCase = true)
+            val recordTypeMatchesFilter = appliedFilters.isEmpty() || appliedFilters.contains(record.recordType)
+
+            nameMatchesQuery || firstNameMatchesQuery
+        }?.filter { record ->
+            appliedFilters.isEmpty() || appliedFilters.contains(record.recordType)
         }
-        _filteredRecords.value = filteredList
+
+        _filteredRecordsLiveData.value = filteredList
     }
 }

@@ -48,7 +48,7 @@ class RoleSelectionFragment : Fragment() {
 
     private fun setItensDropMenu() {
         val items = listOf("Admin", "Manager", "Employee")
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, R.id.itemTextView, items)
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, R.id.autoCompleteTextView, items)
         textField?.setAdapter(adapter)
     }
 

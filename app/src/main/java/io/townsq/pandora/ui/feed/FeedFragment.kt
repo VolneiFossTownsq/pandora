@@ -25,7 +25,6 @@ class FeedFragment : Fragment() {
     private var shiftButton: Chip? = null
     private var gasButton: Chip? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +40,6 @@ class FeedFragment : Fragment() {
         gasButton = binding?.gas
         searchView = binding?.searchView
 
-
         setupBindings()
         onClickFilter()
         setupSearchView()
@@ -49,60 +47,54 @@ class FeedFragment : Fragment() {
         return binding?.root
     }
 
-    fun setupBindings() {
+    private fun setupBindings() {
+        feedViewModel.filteredRecordsLiveData.observe(viewLifecycleOwner) { filteredRecords ->
+            filteredRecords?.let { recordAdapter?.setRecords(it) }
+        }
 
         feedViewModel.recordsLiveData.observe(viewLifecycleOwner) { records ->
             recordAdapter?.setRecords(records)
-        }.also {
-            feedViewModel.filteredRecords.observe(viewLifecycleOwner) { filteredList ->
-                if (filteredList != null) {
-                    recordAdapter?.setRecords(filteredList)
-                }
-            }
         }
     }
 
     private fun onClickFilter() {
         maintenanceButton?.setOnCheckedChangeListener { chip, isChecked ->
             if (isChecked) {
-                recordAdapter?.addFilter(RecordType.MAINTENANCE)
+                feedViewModel.addFilter(RecordType.MAINTENANCE)
             } else {
-                recordAdapter?.removeFilter(RecordType.MAINTENANCE)
+                feedViewModel.removeFilter(RecordType.MAINTENANCE)
             }
         }
 
         shiftButton?.setOnCheckedChangeListener { chip, isChecked ->
             if (isChecked) {
-                recordAdapter?.addFilter(RecordType.SHIFT_START)
+                feedViewModel.addFilter(RecordType.SHIFT_START)
             } else {
-                recordAdapter?.removeFilter(RecordType.SHIFT_START)
+                feedViewModel.removeFilter(RecordType.SHIFT_START)
             }
         }
 
         gasButton?.setOnCheckedChangeListener { chip, isChecked ->
             if (isChecked) {
-                recordAdapter?.addFilter(RecordType.GAS)
+                feedViewModel.addFilter(RecordType.GAS)
             } else {
-                recordAdapter?.removeFilter(RecordType.GAS)
+                feedViewModel.removeFilter(RecordType.GAS)
             }
         }
     }
 
-
     private fun setupSearchView() {
-        searchView?.setOnQueryTextListener(
-            object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    return false
-                }
-
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    newText?.let {
-                        feedViewModel.filterRecord(it)
-                    }
-                    return true
-                }
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
             }
-        )
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    feedViewModel.filterRecord(it)
+                }
+                return true
+            }
+        })
     }
 }
