@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.role
+package io.townsq.pandora.ui.register.role
 
 import android.os.Bundle
 import android.view.LayoutInflater

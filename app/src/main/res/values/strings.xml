@@ -17,4 +17,13 @@
     <string name="msg_input_email_password">Inform email address and password</string>
     <string name="title_email">Email</string>
     <string name="title_password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_select_vehicle">Which vehicle are you in?</string>
+    <string name="action_to_record_type">Continue</string>
+    <string name="msg_personal_Info">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
+    <string name="msg_type_register">Which action are you registering?</string>
+    <string name="action_maintenance">Maintenance</string>
+    <string name="action_shift">Shift</string>
+    <string name="action_gas">Gas</string>
 </resources>
