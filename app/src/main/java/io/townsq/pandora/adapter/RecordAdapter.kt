@@ -22,34 +22,11 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         filteredList.addAll(recordList)
     }
 
-    fun addFilter(recordType: RecordType) {
-        appliedFilters.add(recordType)
-        applyFilters()
-    }
-
-    fun removeFilter(recordType: RecordType) {
-        appliedFilters.remove(recordType)
-        applyFilters()
-    }
-
-    private fun applyFilters() {
-        filteredList.clear()
-        for (record in recordList) {
-            if (appliedFilters.isEmpty() || appliedFilters.contains(record.recordType)) {
-                filteredList.add(record)
-            }
-        }
-        notifyDataSetChanged()
-    }
-
-
     fun setRecords(newRecords: List<Record>) {
         recordList = newRecords
-        filteredList.clear()
-        filteredList.addAll(newRecords)
         notifyDataSetChanged()
     }
-
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegisterViewHolder {
         binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RegisterViewHolder(binding!!.root)
