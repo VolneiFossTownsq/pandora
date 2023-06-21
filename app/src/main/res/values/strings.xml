@@ -25,4 +25,5 @@
     <string name="msg_input_email_password">Inform email address and password</string>
     <string name="title_email">Email</string>
     <string name="title_password">Password</string>
+    <string name="msg_personal_Info">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
 </resources>
