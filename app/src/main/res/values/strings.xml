@@ -8,4 +8,21 @@
     <string name="title_driver">Driver: Jairo Ceazza</string>
     <string name="title_date_register">06/06/23 – 07:00 AM</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_hello_blank_fragment">Hello blank fragment</string>
+    <string name="msg_info_employee">Share information about your employee</string>
+    <string name="title_username">Username</string>
+    <string name="title_first_name">First name</string>
+    <string name="title_last_name">Last name</string>
+    <string name="action_continue_register">continue</string>
+    <string name="msg_phrase">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
+    <string name="msg_about_function">What does they do in your company?</string>
+    <string name="select_your_role">Select your role</string>
+    <string name="continue_to_registe">Continue</string>
+    <string name="msg_successfully_registered">The user has been successfully registered to <font color="#E24C44">Pandora</font></string>
+    <string name="action_login">Login</string>
+    <string name="action_reset_password">Forgot my password</string>
+    <string name="action_register">I don\'t have acess yet</string>
+    <string name="msg_input_email_password">Inform email address and password</string>
+    <string name="title_email">Email</string>
+    <string name="title_password">Password</string>
 </resources>
