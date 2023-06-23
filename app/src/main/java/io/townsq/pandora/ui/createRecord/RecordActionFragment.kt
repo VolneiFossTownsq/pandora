@@ -1,6 +1,5 @@
 package io.townsq.pandora.ui.createRecord
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +27,8 @@ class RecordActionFragment : Fragment() {
     private var backToSelectVehicle: ImageView? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRecordActionBinding.inflate(inflater, container, false)
@@ -40,14 +40,12 @@ class RecordActionFragment : Fragment() {
         continueToFeed = binding?.actionCreate
         backToSelectVehicle = binding?.backToSelectVehicle
 
-
         setupView()
 
         return binding?.root
     }
 
     private fun setupView() {
-
         setupInstances()
 
         continueToFeed?.setOnClickListener {
@@ -98,7 +96,4 @@ class RecordActionFragment : Fragment() {
         optionShift?.newInstance(RecordType.SHIFT_START)
         optionGas?.newInstance(RecordType.GAS)
     }
-
 }
-
-

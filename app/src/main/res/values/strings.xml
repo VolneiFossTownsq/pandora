@@ -26,4 +26,7 @@
     <string name="action_maintenance">Maintenance</string>
     <string name="action_shift">Shift</string>
     <string name="action_gas">Gas</string>
+    <string name="msg_service_cost">Please, inform the service cost for your maintenance</string>
+    <string name="action_create_record">Create</string>
+    <string name="title_price_service">0,00</string>
 </resources>

@@ -20,7 +20,19 @@
         android:label="fragment_record_action"
         tools:layout="@layout/fragment_record_action" >
         <action
+            android:id="@+id/action_recordActionFragment_to_recordServiceCostFragment"
+            app:destination="@id/recordServiceCostFragment" />
+        <action
             android:id="@+id/action_recordActionFragment_to_vehicleSelectionFragment"
             app:destination="@id/vehicleSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordServiceCostFragment"
+        android:name="io.townsq.pandora.ui.createRecord.RecordServiceCostFragment"
+        android:label="fragment_record_service_cost"
+        tools:layout="@layout/fragment_record_service_cost" >
+        <action
+            android:id="@+id/action_recordServiceCostFragment_to_recordActionFragment"
+            app:destination="@id/recordActionFragment" />
     </fragment>
 </navigation>
