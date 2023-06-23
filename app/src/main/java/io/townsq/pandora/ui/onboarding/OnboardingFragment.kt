@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import io.townsq.pandora.databinding.FragmentOnboardingBinding
 
-
 class OnboardingFragment : Fragment() {
 
     private var binding: FragmentOnboardingBinding? = null
@@ -16,7 +15,8 @@ class OnboardingFragment : Fragment() {
     private var login: Button? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false)
@@ -29,13 +29,10 @@ class OnboardingFragment : Fragment() {
         return binding?.root
     }
 
-    private fun setupView(){
+    private fun setupView() {
         register?.setOnClickListener {
-
         }
         login?.setOnClickListener {
-
         }
     }
-
 }
