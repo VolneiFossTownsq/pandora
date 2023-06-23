@@ -22,13 +22,14 @@ class VehicleSelectionFragment : Fragment() {
     private var createRecordAdapter: CreateRecordAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View ?{
+    ): View? {
         binding = FragmentVehicleSelectionBinding.inflate(inflater, container, false)
 
         continueToRecordType = binding?.continueButtoToRecordType
-        createRecordAdapter = CreateRecordAdapter(recordViewModel)
+        createRecordAdapter = CreateRecordAdapter()
         recyclerViewRecord = binding?.recyclerViewRecordVehicle
         recyclerViewRecord?.adapter = createRecordAdapter
 
@@ -48,13 +49,13 @@ class VehicleSelectionFragment : Fragment() {
         }
     }
 
-    private fun setupView(){
+    private fun setupView() {
         continueToRecordType?.setOnClickListener {
             onClickToRecordType()
         }
     }
 
-    private fun onClickToRecordType(){
+    private fun onClickToRecordType() {
         findNavController().navigate(R.id.action_vehicleSelectionFragment_to_recordActionFragment)
     }
 }

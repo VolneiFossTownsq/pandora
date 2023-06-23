@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -23,7 +22,6 @@ class RecordActionFragment : Fragment() {
     private var optionGas: CardPandora? = null
     private var actionCreate: Button? = null
     private var binding: FragmentRecordActionBinding? = null
-    private var continueToFeed: Button? = null
     private var backToSelectVehicle: ImageView? = null
 
     override fun onCreateView(
@@ -36,8 +34,7 @@ class RecordActionFragment : Fragment() {
         optionMaintenance = binding?.optionMaintenance
         optionShift = binding?.optionShift
         optionGas = binding?.optionGas
-        actionCreate = binding?.actionCreate
-        continueToFeed = binding?.actionCreate
+        actionCreate = binding?.actionContinueToServiceCost
         backToSelectVehicle = binding?.backToSelectVehicle
 
         setupView()
@@ -46,10 +43,10 @@ class RecordActionFragment : Fragment() {
     }
 
     private fun setupView() {
-        setupInstances()
+        setupRecordTypeOptions()
 
-        continueToFeed?.setOnClickListener {
-            onClickToFeed()
+        actionCreate?.setOnClickListener {
+            onClickToServiceCost()
         }
 
         backToSelectVehicle?.setOnClickListener {
@@ -69,8 +66,8 @@ class RecordActionFragment : Fragment() {
         }
     }
 
-    private fun onClickToFeed() {
-        Toast.makeText(requireContext(), "Go to Feed", Toast.LENGTH_SHORT).show()
+    private fun onClickToServiceCost() {
+        findNavController().navigate(R.id.action_recordActionFragment_to_recordServiceCostFragment)
     }
 
     private fun backToSelectVehicle() {
@@ -91,7 +88,7 @@ class RecordActionFragment : Fragment() {
         selectedCustomView = customView
     }
 
-    private fun setupInstances() {
+    private fun setupRecordTypeOptions() {
         optionMaintenance?.newInstance(RecordType.MAINTENANCE)
         optionShift?.newInstance(RecordType.SHIFT_START)
         optionGas?.newInstance(RecordType.GAS)
