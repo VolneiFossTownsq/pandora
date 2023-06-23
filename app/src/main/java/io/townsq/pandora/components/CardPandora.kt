@@ -42,17 +42,15 @@ class CardPandora @JvmOverloads constructor(
         recordTypeText?.setTextColor(color)
     }
 
-
     private fun setupViews() {
         recordIcon?.setImageResource(setupIcon())
         recordTypeText?.text = setupString()
-
     }
 
     private fun setupString(): String? {
-        return if (recordType?.type.toString().contains("Shift")){
+        return if (recordType?.type.toString().contains("Shift")) {
             "Shift"
-        }else{
+        } else {
             recordType?.type
         }
     }
