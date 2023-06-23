@@ -6,57 +6,53 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import io.townsq.pandora.R
 import io.townsq.pandora.data.Record
-import io.townsq.pandora.databinding.CardItemRecordVehicleBinding
-import io.townsq.pandora.ui.createRecord.RecordViewModel
 
-class CreateRecordAdapter(private val viewModel: RecordViewModel) :
-    RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
-
-    private var binding: CardItemRecordVehicleBinding? = null
+class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
     private var recordList = listOf<Record>()
+    private var selectedItemPosition = -1
 
     fun setRecords(recordList: List<Record>) {
         this.recordList = recordList
         notifyDataSetChanged()
     }
 
+    fun updateSelectedItemPosition(position: Int) {
+        selectedItemPosition = position
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreateRecordViewHolder {
-        binding =
-            CardItemRecordVehicleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CreateRecordViewHolder(binding!!.root)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_item_record_vehicle, parent, false)
+        return CreateRecordViewHolder(itemView)
     }
 
     override fun getItemCount() = recordList.size
 
     override fun onBindViewHolder(holder: CreateRecordViewHolder, position: Int) {
         val currentItem = recordList[position]
-        holder.bind(currentItem, position)
+        holder.bind(currentItem, position, selectedItemPosition)
     }
 
-    inner class CreateRecordViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class CreateRecordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val vehicleSelect: RadioButton = itemView.findViewById(R.id.vehicleSelect)
+        private val vehicleSelected: View = itemView.findViewById(R.id.vehicleSelected)
+        private val vehicleName: TextView = itemView.findViewById(R.id.vehicleName)
+        private val licensePlate: TextView = itemView.findViewById(R.id.licensePlate)
 
-        private var vehicleSelect: RadioButton? = binding?.vehicleSelect
-        private var vehicleSelected: View? = binding?.vehicleSelected
-        private var vehicleName: TextView? = binding?.VehicleName
-        private var licensePlate: TextView? = binding?.licensePlate
+        fun bind(record: Record, position: Int, selectedItemPosition: Int) {
+            vehicleName.text = record.vehicle.name
+            licensePlate.text = record.vehicle.licensePlate
 
-        fun bind(record: Record, position: Int) {
-            vehicleName?.text = record.vehicle.name
-            licensePlate?.text = record.vehicle.licensePlate
+            vehicleSelect.isChecked = position == selectedItemPosition
 
-            vehicleSelect?.isChecked = position == viewModel.selectedItemPosition.value
-
-            vehicleSelect?.setOnClickListener {
-                viewModel.updateSelectedItemPosition(position)
-                notifyDataSetChanged()
+            vehicleSelect.setOnClickListener {
+                updateSelectedItemPosition(position)
             }
 
-            viewModel.selectedItemPosition.observe(itemView.context as LifecycleOwner) { selectedPosition ->
-                vehicleSelected?.isVisible = position == selectedPosition
-            }
+            vehicleSelected.isVisible = position == selectedItemPosition
         }
     }
 }
