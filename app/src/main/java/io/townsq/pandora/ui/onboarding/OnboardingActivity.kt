@@ -1,9 +1,8 @@
 package io.townsq.pandora.ui.onboarding
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils.replace
-import androidx.fragment.app.commit
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import io.townsq.pandora.R
 import io.townsq.pandora.databinding.ActivityOnboardingBinding
 
@@ -16,8 +15,10 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, OnboardingFragment())
-        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.onboarding_nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        navController.setGraph(R.navigation.nav_graph)
     }
 }

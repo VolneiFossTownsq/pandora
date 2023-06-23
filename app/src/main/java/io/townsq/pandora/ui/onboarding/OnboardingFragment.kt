@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import io.townsq.pandora.R
 import io.townsq.pandora.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {
@@ -31,8 +33,10 @@ class OnboardingFragment : Fragment() {
 
     private fun setupView() {
         register?.setOnClickListener {
+            findNavController().navigate(R.id.action_onboardingFragment_to_personalInfoFragment)
         }
         login?.setOnClickListener {
+            findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
     }
 }

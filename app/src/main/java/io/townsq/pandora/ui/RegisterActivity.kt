@@ -10,10 +10,10 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val navigationHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
-        val navigationController = navigationHostFragment.navController
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.register_nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        navigationController.setGraph(R.navigation.nav_graph)
+        navController.setGraph(R.navigation.nav_graph)
     }
 }

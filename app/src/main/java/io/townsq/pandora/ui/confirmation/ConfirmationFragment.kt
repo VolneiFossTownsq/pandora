@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
@@ -17,7 +16,8 @@ class ConfirmationFragment : Fragment() {
     private var goToLogin: Button? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_confirmation, container, false)
@@ -31,7 +31,6 @@ class ConfirmationFragment : Fragment() {
     }
 
     private fun setupView() {
-
         backToPassword?.setOnClickListener {
             backToRoleSelection()
         }
@@ -46,6 +45,6 @@ class ConfirmationFragment : Fragment() {
     }
 
     private fun login() {
-        Toast.makeText(activity, "Login", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_confirmationFragment_to_loginFragment)
     }
 }

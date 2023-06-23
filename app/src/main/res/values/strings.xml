@@ -22,4 +22,5 @@
     <string name="msg_about_pandora">We can help your everyday work keeping track of your shifts and maintenance for your vehicle!</string>
     <string name="action_create_account">Register</string>
     <string name="action_login_account">Login</string>
+    <string name="msg_personal_Info">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
 </resources>
