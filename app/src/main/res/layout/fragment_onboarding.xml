@@ -39,58 +39,29 @@
         android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@+id/msgWelcomeOnboarding" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/containerButtonRegister"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/rouge_red"
-        android:elevation="8dp"
-        android:outlineSpotShadowColor="@color/black"
-        app:cardCornerRadius="4dp"
+    <Button
+        android:id="@+id/toCreateAccount"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/action_create_account"
+        app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/containerButtonLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="p">
+        app:layout_constraintEnd_toStartOf="@+id/toLogin"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/toCreateAccount"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/roboto_medium"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="@string/action_create_account"
-            android:textSize="16sp"
-            app:cornerRadius="4dp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/containerButtonLogin"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/off_white"
-        android:elevation="8dp"
-        app:cardCornerRadius="4dp"
+    <Button
+        android:id="@+id/toLogin"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/action_login"
+        android:textColor="@color/rouge_red"
+        app:cornerRadius="4dp"
+        app:layout_constraintStart_toEndOf="@id/toCreateAccount"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/containerButtonRegister">
-
-        <Button
-            android:id="@+id/toLogin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/off_white"
-            android:fontFamily="@font/roboto_medium"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="@string/action_login_account"
-            android:textColor="@color/rouge_red"
-            android:textSize="16sp"
-            app:cornerRadius="4dp" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
