@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/VehicleName"
+                android:id="@+id/vehicleName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -54,7 +54,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/vehicleSelect"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/vehicleSelect"
-                app:layout_constraintTop_toBottomOf="@+id/VehicleName" />
+                app:layout_constraintTop_toBottomOf="@+id/vehicleName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
