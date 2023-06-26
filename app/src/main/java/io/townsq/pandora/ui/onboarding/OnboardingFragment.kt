@@ -35,6 +35,7 @@ class OnboardingFragment : Fragment() {
         register?.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingFragment_to_personalInfoFragment)
         }
+
         login?.setOnClickListener {
             findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
