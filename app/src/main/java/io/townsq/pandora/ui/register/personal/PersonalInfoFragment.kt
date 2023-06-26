@@ -33,7 +33,6 @@ class PersonalInfoFragment : Fragment() {
     }
 
     private fun setupView() {
-
         returnToLogin?.setOnClickListener {
             Toast.makeText(activity, "Return Login", Toast.LENGTH_SHORT).show()
         }
