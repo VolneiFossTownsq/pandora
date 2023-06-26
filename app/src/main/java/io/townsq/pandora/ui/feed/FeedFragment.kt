@@ -13,7 +13,6 @@ import io.townsq.pandora.data.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class FeedFragment : Fragment() {
 
     private var binding: FragmentFeedBinding? = null
@@ -26,7 +25,8 @@ class FeedFragment : Fragment() {
     private var gasButton: Chip? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFeedBinding.inflate(inflater, container, false)

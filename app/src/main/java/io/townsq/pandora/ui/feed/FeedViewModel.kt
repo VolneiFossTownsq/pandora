@@ -8,11 +8,8 @@ import io.townsq.pandora.data.Record
 import io.townsq.pandora.data.RecordType
 import io.townsq.pandora.data.Vehicle
 import java.util.Date
-import kotlin.time.Duration.Companion.days
-
 
 class FeedViewModel : ViewModel() {
-
 
     private val _recordsLiveData = MutableLiveData<List<Record>>()
     val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
@@ -48,12 +45,8 @@ class FeedViewModel : ViewModel() {
         _filteredRecordsLiveData.value = filteredRecords
     }
 
-
-
     private fun getMockRecords(): List<Record> {
-
         val currentTime = Date().time
-
 
         return listOf(
             Record(
@@ -72,7 +65,10 @@ class FeedViewModel : ViewModel() {
                 "3",
                 RecordType.GAS,
                 Vehicle(
-                    "3", "Civic", "GHI789", Driver("3", "Pedro", "Souza", 987654)
+                    "3",
+                    "Civic",
+                    "GHI789",
+                    Driver("3", "Pedro", "Souza", 987654)
                 ),
                 Date(currentTime)
             ),
@@ -80,16 +76,22 @@ class FeedViewModel : ViewModel() {
                 "4",
                 RecordType.MAINTENANCE,
                 Vehicle(
-                    "4", "Jetta", "GHI789", Driver("4", "Eduarda", "Santos", 987654)
+                    "4",
+                    "Jetta",
+                    "GHI789",
+                    Driver("4", "Eduarda", "Santos", 987654)
                 ),
                 Date(currentTime),
 
-                ),
+            ),
             Record(
                 "5",
                 RecordType.SHIFT_START,
                 Vehicle(
-                    "5", "Skyline", "GHI789", Driver("5", "Jorge", "Lima", 987654)
+                    "5",
+                    "Skyline",
+                    "GHI789",
+                    Driver("5", "Jorge", "Lima", 987654)
                 ),
                 Date(currentTime)
             ),
@@ -97,7 +99,10 @@ class FeedViewModel : ViewModel() {
                 "6",
                 RecordType.GAS,
                 Vehicle(
-                    "6", "350Z", "GHI789", Driver("6", "Jessica", "Pereira", 987654)
+                    "6",
+                    "350Z",
+                    "GHI789",
+                    Driver("6", "Jessica", "Pereira", 987654)
                 ),
                 Date(currentTime)
             )

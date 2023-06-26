@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
 import io.townsq.pandora.data.Record
@@ -16,7 +17,6 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
     private var binding: ListItemBinding? = null
     private var recordList: List<Record> = listOf()
     private var filteredList: MutableList<Record> = mutableListOf()
-    private val appliedFilters: MutableSet<RecordType> = mutableSetOf()
 
     init {
         filteredList.addAll(recordList)
@@ -26,10 +26,10 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         recordList = newRecords
         notifyDataSetChanged()
     }
-    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegisterViewHolder {
         binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RegisterViewHolder(binding!!.root)
+        return RegisterViewHolder(binding?.root)
     }
 
     override fun getItemCount(): Int = filteredList.size
@@ -39,18 +39,18 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         holder.bind(currentItem)
     }
 
-    inner class RegisterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
 
-        private var imgRegister: ImageView = binding!!.imgRegister
-        private var dateRegister: TextView = binding!!.dateRegister
-        private var infoVehicle: TextView = binding!!.infoVehicle
-        private var infoDriver: TextView = binding!!.infoDriver
+        private var imgRegister: ImageView? = binding?.imgRegister
+        private var dateRegister: TextView? = binding?.dateRegister
+        private var infoVehicle: TextView? = binding?.infoVehicle
+        private var infoDriver: TextView? = binding?.infoDriver
 
         fun bind(record: Record) {
-            imgRegister.setImageResource(iconForEachRecordType(record.recordType))
-            dateRegister.text = record.recordDate.toString()
-            infoDriver.text = record.vehicle.driver.firstName
-            infoVehicle.text = record.vehicle.name
+            imgRegister?.setImageResource(iconForEachRecordType(record.recordType))
+            dateRegister?.text = record.recordDate.toString()
+            infoDriver?.text = record.vehicle.driver.firstName
+            infoVehicle?.text = record.vehicle.name
         }
 
         private fun iconForEachRecordType(recordType: RecordType): Int {
