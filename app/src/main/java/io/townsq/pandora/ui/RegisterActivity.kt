@@ -2,7 +2,6 @@ package io.townsq.pandora.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import io.townsq.pandora.R
 import io.townsq.pandora.databinding.ActivityRegisterBinding
@@ -10,7 +9,6 @@ import io.townsq.pandora.databinding.ActivityRegisterBinding
 class RegisterActivity : AppCompatActivity() {
 
     private var binding: ActivityRegisterBinding? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
