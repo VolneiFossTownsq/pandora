@@ -5,4 +5,7 @@
     <color name="rouge_red">#E24C44</color>
     <color name="light_red">#F0F0F0</color>
     <color name="off_white">#F0F0F0</color>
+    <color name="red_mask">#E2A29F</color>
+    <color name="bold_salmon">#BC413A</color>
+    <color name="transparent_rouge_red">#33E24C44</color>
 </resources>
