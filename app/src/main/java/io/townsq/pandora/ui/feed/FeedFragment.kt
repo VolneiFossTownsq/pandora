@@ -18,7 +18,7 @@ class FeedFragment : Fragment() {
     private var binding: FragmentFeedBinding? = null
     private val feedViewModel: FeedViewModel by viewModel()
     private var recyclerView: RecyclerView? = null
-    private var recordAdapter: RecordAdapter? = null
+    private var recordAdapter: RecordAdapter = RecordAdapter()
     private var searchView: SearchView? = null
     private var maintenanceButton: Chip? = null
     private var shiftButton: Chip? = null
@@ -31,7 +31,6 @@ class FeedFragment : Fragment() {
     ): View? {
         binding = FragmentFeedBinding.inflate(inflater, container, false)
 
-        recordAdapter = RecordAdapter()
         recyclerView = binding?.recyclerView
         recyclerView?.adapter = recordAdapter
 
@@ -41,10 +40,14 @@ class FeedFragment : Fragment() {
         searchView = binding?.searchView
 
         setupBindings()
-        onClickFilter()
-        setupSearchView()
+        setupViews()
 
         return binding?.root
+    }
+
+    private fun setupViews() {
+        onClickFilter()
+        setupSearchView()
     }
 
     private fun setupBindings() {

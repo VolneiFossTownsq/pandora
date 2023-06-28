@@ -2,11 +2,9 @@ package io.townsq.pandora.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
 import androidx.navigation.fragment.NavHostFragment
 import io.townsq.pandora.R
 import io.townsq.pandora.databinding.ActivityAuthenticationBinding
-import io.townsq.pandora.ui.login.LoginFragment
 
 class AuthenticationActivity : AppCompatActivity() {
 
