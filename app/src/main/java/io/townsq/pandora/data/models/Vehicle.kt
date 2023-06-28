@@ -1,4 +1,4 @@
-package io.townsq.pandora.data
+package io.townsq.pandora.data.models
 
 data class Vehicle(
     val id: String,

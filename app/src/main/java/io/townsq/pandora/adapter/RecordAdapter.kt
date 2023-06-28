@@ -5,11 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.data.Record
-import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.data.models.Record
+import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.ListItemBinding
 
 class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {

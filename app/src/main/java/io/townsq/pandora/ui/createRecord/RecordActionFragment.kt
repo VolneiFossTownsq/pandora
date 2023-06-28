@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
 import io.townsq.pandora.components.CardPandora
-import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentRecordActionBinding
 
 class RecordActionFragment : Fragment() {

@@ -25,10 +25,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.AuthenticationActivity"
+            android:name=".ui.login.AuthenticationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".data.main.MainActivity"
             android:exported="true" />
         <meta-data
             android:name="preloaded_fonts"

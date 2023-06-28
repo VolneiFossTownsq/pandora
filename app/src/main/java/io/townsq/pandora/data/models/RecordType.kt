@@ -1,4 +1,4 @@
-package io.townsq.pandora.data
+package io.townsq.pandora.data.models
 
 enum class RecordType(val type: String, val queryValue: String) {
     MAINTENANCE("Maintenance", "maintenance"),

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import io.townsq.pandora.R
-import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.data.models.RecordType
 
 class CardPandora @JvmOverloads constructor(
     context: Context,

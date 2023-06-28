@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.data.Record
+import io.townsq.pandora.data.models.Record
 
 class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
     private var recordList = listOf<Record>()

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import io.townsq.pandora.adapter.RecordAdapter
-import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

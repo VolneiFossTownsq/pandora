@@ -3,10 +3,10 @@ package io.townsq.pandora.ui.feed
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.townsq.pandora.data.Driver
-import io.townsq.pandora.data.Record
-import io.townsq.pandora.data.RecordType
-import io.townsq.pandora.data.Vehicle
+import io.townsq.pandora.data.models.Driver
+import io.townsq.pandora.data.models.Record
+import io.townsq.pandora.data.models.RecordType
+import io.townsq.pandora.data.models.Vehicle
 import java.util.Date
 
 class FeedViewModel : ViewModel() {
