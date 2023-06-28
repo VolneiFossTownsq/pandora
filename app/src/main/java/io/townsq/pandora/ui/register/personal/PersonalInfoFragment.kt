@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.personal
+package io.townsq.pandora.ui.register.personal
 
 import android.os.Bundle
 import android.util.Log

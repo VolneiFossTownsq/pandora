@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.password
+package io.townsq.pandora.ui.register.password
 
 import android.os.Bundle
 import android.view.LayoutInflater

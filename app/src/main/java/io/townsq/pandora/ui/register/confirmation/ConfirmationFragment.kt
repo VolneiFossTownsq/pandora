@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.confirmation
+package io.townsq.pandora.ui.register.confirmation
 
 import android.os.Bundle
 import android.view.LayoutInflater
