@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.password
+package io.townsq.pandora.ui.register.password
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,11 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
+import io.townsq.pandora.databinding.FragmentPasswordBinding
 
 class PasswordFragment : Fragment() {
 
+    private var binding: FragmentPasswordBinding? = null
     private var backToRoleSelection: ImageView? = null
     private var goToConfirmation: Button? = null
 
@@ -19,14 +21,14 @@ class PasswordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_password, container, false)
+        binding = FragmentPasswordBinding.inflate(inflater, container, false)
 
-        backToRoleSelection = view.findViewById(R.id.backToRoleSelection)
-        goToConfirmation = view.findViewById(R.id.goToConfirmation)
+        backToRoleSelection = binding?.backToRoleSelection
+        goToConfirmation = binding?.goToConfirmation
 
         setupView()
 
-        return view
+        return binding?.root
     }
 
     private fun setupView() {

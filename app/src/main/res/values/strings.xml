@@ -22,5 +22,15 @@
     <string name="msg_about_pandora">We can help your everyday work keeping track of your shifts and maintenance for your vehicle!</string>
     <string name="action_create_account">Register</string>
     <string name="action_login_account">Login</string>
-    <string name="msg_personal_Info">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
+    <string name="title_car_model">Fiat Uno 2007</string>
+    <string name="action_role">Select Your Role</string>
+    <string name="msg_select_vehicle">Which vehicle are you in?</string>
+    <string name="action_to_record_type">Continue</string>
+    <string name="msg_type_register">Which action are you registering?</string>
+    <string name="action_maintenance">Maintenance</string>
+    <string name="action_shift">Shift</string>
+    <string name="action_gas">Gas</string>
+    <string name="msg_service_cost">Please, inform the service cost for your maintenance</string>
+    <string name="action_create_record">Create</string>
+    <string name="title_price_service">0,00</string>
 </resources>

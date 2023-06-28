@@ -1,22 +1,22 @@
-package io.townsq.pandora.ui.login
+package io.townsq.pandora.ui.recordDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import io.townsq.pandora.databinding.FragmentLoginBinding
+import io.townsq.pandora.databinding.FragmentRecordDetailsBinding
 
-class LoginFragment : Fragment() {
+class RecordDetailsFragment : Fragment() {
 
-    private var binding: FragmentLoginBinding? = null
+    private var binding: FragmentRecordDetailsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        binding = FragmentRecordDetailsBinding.inflate(inflater, container, false)
 
         return binding?.root
     }

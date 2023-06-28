@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.role
+package io.townsq.pandora.ui.register.role
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,11 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
+import io.townsq.pandora.databinding.FragmentRoleSelectionBinding
 
 class RoleSelectionFragment : Fragment() {
 
+    private var binding: FragmentRoleSelectionBinding? = null
     var textField: AutoCompleteTextView? = null
     var returnToPersonalInfo: ImageView? = null
     var goToPassword: Button? = null
@@ -22,14 +24,14 @@ class RoleSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_role_selection, container, false)
+        binding = FragmentRoleSelectionBinding.inflate(inflater, container, false)
 
-        returnToPersonalInfo = view.findViewById(R.id.backToPersonalInfo)
-        goToPassword = view.findViewById(R.id.goToPassword)
+        returnToPersonalInfo = binding?.backToPersonalInfo
+        goToPassword = binding?.goToPassword
 
         setupView()
 
-        return view
+        return binding?.root
     }
 
     private fun setupView() {
@@ -42,7 +44,7 @@ class RoleSelectionFragment : Fragment() {
             goToPassword()
         }
 
-        textField = view?.findViewById(R.id.autoCompleteTextView)
+        textField = binding?.autoCompleteTextView
         setItensDropMenu()
     }
 

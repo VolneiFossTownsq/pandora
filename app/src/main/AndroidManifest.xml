@@ -27,7 +27,7 @@
             android:name=".ui.AuthenticationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true" />
         <meta-data
             android:name="preloaded_fonts"
