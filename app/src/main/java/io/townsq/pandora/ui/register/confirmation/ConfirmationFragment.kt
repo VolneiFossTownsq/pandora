@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
+import io.townsq.pandora.databinding.FragmentConfirmationBinding
 
 class ConfirmationFragment : Fragment() {
 
+    private var binding: FragmentConfirmationBinding? = null
     private var backToPassword: ImageView? = null
     private var goToLogin: Button? = null
 
@@ -20,10 +22,10 @@ class ConfirmationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_confirmation, container, false)
+        binding = FragmentConfirmationBinding.inflate(inflater, container, false)
 
-        backToPassword = view.findViewById(R.id.backToPassword)
-        goToLogin = view.findViewById(R.id.goToLogin)
+        backToPassword = binding?.backToPassword
+        goToLogin = binding?.goToLogin
 
         setupView()
 

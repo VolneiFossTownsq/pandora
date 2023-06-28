@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/light_red"
-    tools:context=".ui.RegisterActivity">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/backToPassword"
