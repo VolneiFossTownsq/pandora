@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui
+package io.townsq.pandora
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
