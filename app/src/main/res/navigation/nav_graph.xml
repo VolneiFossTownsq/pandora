@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/personalInfoFragment">
+    app:startDestination="@id/onboardingFragment">
 
     <fragment
         android:id="@+id/personalInfoFragment"
-        android:name="io.townsq.pandora.ui.personal.PersonalInfoFragment"
+        android:name="io.townsq.pandora.ui.register.personal.PersonalInfoFragment"
         android:label="fragment_personal_info"
-        tools:layout="@layout/fragment_personal_info" >
+        tools:layout="@layout/fragment_personal_info">
         <action
             android:id="@+id/action_personalInfoFragment_to_roleSelectionFragment"
             app:destination="@id/roleSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/roleSelectionFragment"
-        android:name="io.townsq.pandora.ui.role.RoleSelectionFragment"
+        android:name="io.townsq.pandora.ui.register.role.RoleSelectionFragment"
         android:label="fragment_role_selection"
-        tools:layout="@layout/fragment_role_selection" >
+        tools:layout="@layout/fragment_role_selection">
         <action
             android:id="@+id/action_roleSelectionFragment_to_personalInfoFragment"
             app:destination="@id/personalInfoFragment" />
@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/passwordFragment"
-        android:name="io.townsq.pandora.ui.password.PasswordFragment"
+        android:name="io.townsq.pandora.ui.register.password.PasswordFragment"
         android:label="fragment_password"
-        tools:layout="@layout/fragment_password" >
+        tools:layout="@layout/fragment_password">
         <action
             android:id="@+id/action_passwordFragment_to_roleSelectionFragment"
             app:destination="@id/roleSelectionFragment" />
@@ -40,12 +40,32 @@
     </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
-        android:name="io.townsq.pandora.ui.confirmation.ConfirmationFragment"
+        android:name="io.townsq.pandora.ui.register.confirmation.ConfirmationFragment"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" >
+        tools:layout="@layout/fragment_confirmation">
         <action
             android:id="@+id/action_confirmationFragment_to_passwordFragment"
             app:destination="@id/passwordFragment" />
+        <action
+            android:id="@+id/action_confirmationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
     </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="io.townsq.pandora.ui.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="io.townsq.pandora.ui.login.LoginFragment"
+        android:label="LoginFragment" />
 
 </navigation>

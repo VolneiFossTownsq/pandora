@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import io.townsq.pandora.R
+import io.townsq.pandora.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
+
+    private var binding: FragmentLoginBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        return view
+        return binding?.root
     }
 }

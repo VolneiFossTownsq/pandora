@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_register_record"
+    app:startDestination="@id/vehicleSelectionFragment">
+
+    <fragment
+        android:id="@+id/vehicleSelectionFragment"
+        android:name="io.townsq.pandora.ui.createRecord.VehicleSelectionFragment"
+        android:label="fragment_vehicle_selection"
+        tools:layout="@layout/fragment_vehicle_selection" >
+        <action
+            android:id="@+id/action_vehicleSelectionFragment_to_recordActionFragment"
+            app:destination="@id/recordActionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordActionFragment"
+        android:name="io.townsq.pandora.ui.createRecord.RecordActionFragment"
+        android:label="fragment_record_action"
+        tools:layout="@layout/fragment_record_action" >
+        <action
+            android:id="@+id/action_recordActionFragment_to_recordServiceCostFragment"
+            app:destination="@id/recordServiceCostFragment" />
+        <action
+            android:id="@+id/action_recordActionFragment_to_vehicleSelectionFragment"
+            app:destination="@id/vehicleSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordServiceCostFragment"
+        android:name="io.townsq.pandora.ui.createRecord.RecordServiceCostFragment"
+        android:label="fragment_record_service_cost"
+        tools:layout="@layout/fragment_record_service_cost" >
+        <action
+            android:id="@+id/action_recordServiceCostFragment_to_recordActionFragment"
+            app:destination="@id/recordActionFragment" />
+    </fragment>
+</navigation>

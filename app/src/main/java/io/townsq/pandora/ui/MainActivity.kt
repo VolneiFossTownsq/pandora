@@ -2,7 +2,6 @@ package io.townsq.pandora.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import io.townsq.pandora.R
 import io.townsq.pandora.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

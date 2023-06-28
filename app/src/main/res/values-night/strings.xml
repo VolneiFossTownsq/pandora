@@ -25,4 +25,6 @@
     <string name="title_vehicle">Fiorino 2018</string>
     <string name="title_driver">Driver: Jairo Ceazza</string>
     <string name="title_date_register">06/06/23 – 07:00 AM</string>
+    <string name="msg_select_vehicle">Which vehicle are you in?</string>
+    <string name="action_to_record_type">Continue</string>
 </resources>
