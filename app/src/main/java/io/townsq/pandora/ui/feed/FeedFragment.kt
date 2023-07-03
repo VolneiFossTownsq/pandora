@@ -1,5 +1,6 @@
 package io.townsq.pandora.ui.feed
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,11 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.townsq.pandora.adapter.RecordAdapter
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
+import io.townsq.pandora.ui.createRecord.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedFragment : Fragment() {
@@ -23,6 +26,7 @@ class FeedFragment : Fragment() {
     private var maintenanceButton: Chip? = null
     private var shiftButton: Chip? = null
     private var gasButton: Chip? = null
+    private var newRecord: FloatingActionButton? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,7 @@ class FeedFragment : Fragment() {
         recyclerView?.adapter = recordAdapter
 
         maintenanceButton = binding?.maintenance
+        newRecord = binding?.actionNewRecord
         shiftButton = binding?.shift
         gasButton = binding?.gas
         searchView = binding?.searchView
@@ -47,16 +52,24 @@ class FeedFragment : Fragment() {
 
     private fun setupViews() {
         onClickFilter()
+        newRecord()
         setupSearchView()
+    }
+
+    private fun newRecord() {
+        newRecord?.setOnClickListener {
+            val intent = Intent(requireContext(), RecordActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupBindings() {
         feedViewModel.filteredRecordsLiveData.observe(viewLifecycleOwner) { filteredRecords ->
-            filteredRecords?.let { recordAdapter?.setRecords(it) }
+            filteredRecords?.let { recordAdapter.setRecords(it) }
         }
 
         feedViewModel.recordsLiveData.observe(viewLifecycleOwner) { records ->
-            recordAdapter?.setRecords(records)
+            recordAdapter.setRecords(records)
         }
     }
 
@@ -71,9 +84,9 @@ class FeedFragment : Fragment() {
 
         shiftButton?.setOnCheckedChangeListener { chip, isChecked ->
             if (isChecked) {
-                feedViewModel.addFilter(RecordType.SHIFT_START)
+                feedViewModel.addFilter(RecordType.SHIFT)
             } else {
-                feedViewModel.removeFilter(RecordType.SHIFT_START)
+                feedViewModel.removeFilter(RecordType.SHIFT)
             }
         }
 

@@ -16,7 +16,7 @@ class FeedActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, FeedFragment())
+            replace(R.id.feedFragmentContainer, FeedFragment())
         }
     }
 }
