@@ -10,6 +10,7 @@ import io.townsq.pandora.R
 import io.townsq.pandora.data.models.Record
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.ListItemBinding
+import io.townsq.pandora.utils.DateFormat
 
 class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
@@ -46,8 +47,13 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         private var infoDriver: TextView? = binding?.infoDriver
 
         fun bind(record: Record) {
+
+            val dateString = record.recordDate
+            val formatter = DateFormat()
+            val date = formatter.formatDate(dateString)
+
             imgRegister?.setImageResource(iconForEachRecordType(record.recordType))
-            dateRegister?.text = record.recordDate.toString()
+            dateRegister?.text = date
             infoDriver?.text = record.vehicle.driver.firstName
             infoVehicle?.text = record.vehicle.name
         }
