@@ -16,7 +16,7 @@ class RecordDetailsActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, RecordDetailsFragment())
+            replace(R.id.recordDetailsFragmentContainer, RecordDetailsFragment())
         }
     }
 }

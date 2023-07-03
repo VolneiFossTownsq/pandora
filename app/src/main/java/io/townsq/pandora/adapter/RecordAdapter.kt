@@ -31,14 +31,14 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         return RegisterViewHolder(binding?.root)
     }
 
-    override fun getItemCount(): Int = filteredList.size
+    override fun getItemCount(): Int = recordList.size
 
     override fun onBindViewHolder(holder: RegisterViewHolder, position: Int) {
-        val currentItem = filteredList[position]
+        val currentItem = recordList[position]
         holder.bind(currentItem)
     }
 
-    inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
+    inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
 
         private var imgRegister: ImageView? = binding?.imgRegister
         private var dateRegister: TextView? = binding?.dateRegister
@@ -55,7 +55,7 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         private fun iconForEachRecordType(recordType: RecordType): Int {
             return when (recordType) {
                 RecordType.MAINTENANCE -> R.drawable.ic_maintenance
-                RecordType.SHIFT_START, RecordType.SHIFT_END -> R.drawable.ic_shift
+                RecordType.SHIFT, RecordType.SHIFT -> R.drawable.ic_shift
                 RecordType.GAS -> R.drawable.ic_gas_station
             }
         }

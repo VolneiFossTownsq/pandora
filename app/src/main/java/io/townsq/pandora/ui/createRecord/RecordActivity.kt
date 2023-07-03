@@ -1,13 +1,15 @@
 package io.townsq.pandora.ui.createRecord
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import io.townsq.pandora.R
 import io.townsq.pandora.databinding.ActivityRecordBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecordActivity : AppCompatActivity() {
 
+    private val recordViewModel: RecordViewModel by viewModel()
     private var binding: ActivityRecordBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

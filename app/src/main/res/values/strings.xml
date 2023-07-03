@@ -34,4 +34,8 @@
     <string name="action_create_record">Create</string>
     <string name="title_price_service">0,00</string>
     <string name="msg_personal_Info">This will be your access level to the application, if you’re not the administrator you should contact them first</string>
+    <string name="title_date_register">06/06/2023 - 07:00 AM</string>
+    <string name="title_vehicle">Fiorino 2018</string>
+    <string name="title_driver">Driver: Jairo Ceazza</string>
+    <string name="action_maintence">Maintenance</string>
 </resources>
