@@ -13,4 +13,5 @@ class FeedRemoteDataSource(private val feedService: FeedService) {
             Result.failure(IOException("Error on get method"))
         }
     }
+
 }
