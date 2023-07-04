@@ -17,13 +17,7 @@ class RecordViewModel(private val recordRepository: FeedRepository) : ViewModel(
     val selectedItemPosition: LiveData<Int> = _selectedItemPosition
 
     init {
-        viewModelScope.launch {
-            val recordsResult = recordRepository.getRecords()
-            if (recordsResult.isSuccess) {
-                _recordsLiveData.value = recordsResult.getOrNull()
-                _selectedItemPosition.value = -1
-            }
-        }
+        fetchRecords()
     }
 
     fun updateSelectedItemPosition(position: Int) {
@@ -32,6 +26,16 @@ class RecordViewModel(private val recordRepository: FeedRepository) : ViewModel(
             -1
         } else {
             position
+        }
+    }
+
+    fun fetchRecords(){
+        viewModelScope.launch {
+            val recordsResult = recordRepository.getRecords()
+            if (recordsResult.isSuccess) {
+                _recordsLiveData.value = recordsResult.getOrNull()
+                _selectedItemPosition.value = -1
+            }
         }
     }
 }
