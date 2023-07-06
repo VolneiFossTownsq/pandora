@@ -1,4 +1,4 @@
-package io.townsq.pandora.ui.di
+package io.townsq.pandora.ui.feed.di
 
 import io.townsq.pandora.data.feed.FeedRemoteDataSource
 import io.townsq.pandora.data.feed.FeedRepository
