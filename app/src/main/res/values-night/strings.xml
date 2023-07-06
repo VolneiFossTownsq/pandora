@@ -18,13 +18,8 @@
     <string name="msg_input_email_password">Inform email address and password</string>
     <string name="title_email">Email</string>
     <string name="title_password">Password</string>
-    <string name="title_pandora">Pandora</string>
     <string name="action_shift">Shift</string>
     <string name="action_gas">Gas</string>
-    <string name="action_maintence">Maintence</string>
-    <string name="title_vehicle">Fiorino 2018</string>
-    <string name="title_driver">Driver: Jairo Ceazza</string>
-    <string name="title_date_register">06/06/23 – 07:00 AM</string>
     <string name="msg_select_vehicle">Which vehicle are you in?</string>
     <string name="action_to_record_type">Continue</string>
 </resources>

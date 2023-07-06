@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.data.Record
-import io.townsq.pandora.data.RecordType
+import io.townsq.pandora.data.models.Record
+import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.ListItemBinding
+import io.townsq.pandora.utils.DateFormat
 
-class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
+class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
     private var binding: ListItemBinding? = null
     private var recordList: List<Record> = listOf()
@@ -24,6 +24,8 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
 
     fun setRecords(newRecords: List<Record>) {
         recordList = newRecords
+        filteredList.clear()
+        filteredList.addAll(recordList)
         notifyDataSetChanged()
     }
 
@@ -39,7 +41,7 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         holder.bind(currentItem)
     }
 
-    inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
+    inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
 
         private var imgRegister: ImageView? = binding?.imgRegister
         private var dateRegister: TextView? = binding?.dateRegister
@@ -47,16 +49,21 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         private var infoDriver: TextView? = binding?.infoDriver
 
         fun bind(record: Record) {
+
+            val dateString = record.recordDate
+            val formatter = DateFormat()
+            val date = formatter.formatDate(dateString)
+
             imgRegister?.setImageResource(iconForEachRecordType(record.recordType))
-            dateRegister?.text = record.recordDate.toString()
-            infoDriver?.text = record.vehicle.driver.firstName
+            dateRegister?.text = date
+            infoDriver?.text = "${record.vehicle.driver.firstName} " + "${record.vehicle.driver.lastName}"
             infoVehicle?.text = record.vehicle.name
         }
 
         private fun iconForEachRecordType(recordType: RecordType): Int {
             return when (recordType) {
                 RecordType.MAINTENANCE -> R.drawable.ic_maintenance
-                RecordType.SHIFT_START, RecordType.SHIFT_END -> R.drawable.ic_shift
+                RecordType.SHIFT -> R.drawable.ic_shift
                 RecordType.GAS -> R.drawable.ic_gas_station
             }
         }

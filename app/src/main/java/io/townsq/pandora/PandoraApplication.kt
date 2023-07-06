@@ -1,7 +1,8 @@
 package io.townsq.pandora
 
 import android.app.Application
-import io.townsq.pandora.ui.feed.di.recordListModule
+import io.townsq.pandora.networkModule.networkModule
+import io.townsq.pandora.ui.di.recordListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -15,7 +16,8 @@ class PandoraApplication : Application() {
             androidContext(this@PandoraApplication)
             modules(
                 listOf(
-                    recordListModule
+                    recordListModule,
+                    networkModule,
                 )
             )
         }

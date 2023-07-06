@@ -2,5 +2,4 @@
 <selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:color="@color/rouge_red" android:state_checked="true"/>
     <item android:color="@color/bg_chip_filter" tools:ignore="ResourceCycle" />
-
 </selector>

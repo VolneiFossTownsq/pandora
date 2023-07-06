@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onboardingFragment">
+    app:startDestination="@id/personalInfoFragment">
 
     <fragment
         android:id="@+id/personalInfoFragment"
@@ -46,26 +46,5 @@
         <action
             android:id="@+id/action_confirmationFragment_to_passwordFragment"
             app:destination="@id/passwordFragment" />
-        <action
-            android:id="@+id/action_confirmationFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-
     </fragment>
-    <fragment
-        android:id="@+id/onboardingFragment"
-        android:name="io.townsq.pandora.ui.onboarding.OnboardingFragment"
-        android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding">
-        <action
-            android:id="@+id/action_onboardingFragment_to_personalInfoFragment"
-            app:destination="@id/personalInfoFragment" />
-        <action
-            android:id="@+id/action_onboardingFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="io.townsq.pandora.ui.login.LoginFragment"
-        android:label="LoginFragment" />
-
 </navigation>

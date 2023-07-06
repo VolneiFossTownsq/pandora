@@ -1,14 +1,15 @@
 package io.townsq.pandora.ui.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import io.townsq.pandora.R
 import io.townsq.pandora.databinding.FragmentOnboardingBinding
+import io.townsq.pandora.ui.login.AuthenticationActivity
+import io.townsq.pandora.ui.register.RegisterActivity
 
 class OnboardingFragment : Fragment() {
 
@@ -33,11 +34,13 @@ class OnboardingFragment : Fragment() {
 
     private fun setupView() {
         register?.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_personalInfoFragment)
+            val intent = Intent(requireContext(), RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         login?.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
+            val intent = Intent(requireContext(), AuthenticationActivity::class.java)
+            startActivity(intent)
         }
     }
 }
