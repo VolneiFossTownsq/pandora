@@ -12,7 +12,7 @@ import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.ListItemBinding
 import io.townsq.pandora.utils.DateFormat
 
-class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
+class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
     private var binding: ListItemBinding? = null
     private var recordList: List<Record> = listOf()
@@ -24,6 +24,8 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
 
     fun setRecords(newRecords: List<Record>) {
         recordList = newRecords
+        filteredList.clear()
+        filteredList.addAll(recordList)
         notifyDataSetChanged()
     }
 
@@ -32,10 +34,10 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
         return RegisterViewHolder(binding?.root)
     }
 
-    override fun getItemCount(): Int = recordList.size
+    override fun getItemCount(): Int = filteredList.size
 
     override fun onBindViewHolder(holder: RegisterViewHolder, position: Int) {
-        val currentItem = recordList[position]
+        val currentItem = filteredList[position]
         holder.bind(currentItem)
     }
 
@@ -54,14 +56,14 @@ class RecordAdapter() : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>()
 
             imgRegister?.setImageResource(iconForEachRecordType(record.recordType))
             dateRegister?.text = date
-            infoDriver?.text = record.vehicle.driver.firstName
+            infoDriver?.text = "${record.vehicle.driver.firstName} " + "${record.vehicle.driver.lastName}"
             infoVehicle?.text = record.vehicle.name
         }
 
         private fun iconForEachRecordType(recordType: RecordType): Int {
             return when (recordType) {
                 RecordType.MAINTENANCE -> R.drawable.ic_maintenance
-                RecordType.SHIFT, RecordType.SHIFT -> R.drawable.ic_shift
+                RecordType.SHIFT -> R.drawable.ic_shift
                 RecordType.GAS -> R.drawable.ic_gas_station
             }
         }

@@ -15,7 +15,7 @@ class FeedViewModel(private val feedRepository: FeedRepository) : ViewModel() {
     val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
 
     private val _filteredRecordsLiveData = MutableLiveData<List<Record>?>()
-    val filteredRecordsLiveData: MutableLiveData<List<Record>?> = _filteredRecordsLiveData
+    val filteredRecordsLiveData: LiveData<List<Record>?> = _filteredRecordsLiveData
 
     private val appliedFilters: MutableSet<RecordType> = mutableSetOf()
 
