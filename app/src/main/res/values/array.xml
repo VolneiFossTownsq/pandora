@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="item_list">
-        <item>Admin</item>
-        <item>Manager</item>
-        <item>Employer</item>
-    </string-array>
-</resources>
