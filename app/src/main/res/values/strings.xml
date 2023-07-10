@@ -38,4 +38,5 @@
     <string name="title_vehicle">Fiorino 2018</string>
     <string name="title_driver">Driver: Jairo Ceazza</string>
     <string name="action_maintence">Maintenance</string>
+    <string name="title_document">Document</string>
 </resources>
