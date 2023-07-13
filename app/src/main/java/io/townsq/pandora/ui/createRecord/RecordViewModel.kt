@@ -6,18 +6,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.townsq.pandora.data.feed.FeedRepository
 import io.townsq.pandora.data.models.Record
+import io.townsq.pandora.data.models.RecordType
+import io.townsq.pandora.data.models.Vehicle
+import io.townsq.pandora.data.record.RecordRepository
 import kotlinx.coroutines.launch
 
-class RecordViewModel(private val recordRepository: FeedRepository) : ViewModel() {
+class RecordViewModel(private val recordRepository: RecordRepository) : ViewModel() {
 
-    private val _recordsLiveData = MutableLiveData<List<Record>>()
-    val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
+    private val _vehiclesLiveData = MutableLiveData<List<Vehicle>>()
+    val vehiclesLiveData: LiveData<List<Vehicle>> = _vehiclesLiveData
+
+    private val _selectedVehicle: MutableLiveData<Vehicle?> = MutableLiveData()
+    val selectedVehicle: LiveData<Vehicle?> = _selectedVehicle
+
+    private val _selectedRecordType: MutableLiveData<RecordType?> = MutableLiveData()
+    val selectedRecordType: LiveData<RecordType?> = _selectedRecordType
 
     private val _selectedItemPosition = MutableLiveData<Int>()
     val selectedItemPosition: LiveData<Int> = _selectedItemPosition
 
     init {
-        fetchRecords()
+        getVehiclesByDriverId("648a30cd4cd7ec04e92df3c6")
     }
 
     fun updateSelectedItemPosition(position: Int) {
@@ -29,13 +38,23 @@ class RecordViewModel(private val recordRepository: FeedRepository) : ViewModel(
         }
     }
 
-    fun fetchRecords(){
+    fun setSelectedVehicle(vehicle: Vehicle?) {
+        _selectedVehicle.value = vehicle
+    }
+
+    fun setSelectedRecordType(recordType: RecordType?) {
+        _selectedRecordType.value = recordType
+    }
+
+    private fun getVehiclesByDriverId(driverId: String) {
         viewModelScope.launch {
-            val recordsResult = recordRepository.getRecords()
-            if (recordsResult.isSuccess) {
-                _recordsLiveData.value = recordsResult.getOrNull()
-                _selectedItemPosition.value = -1
+            val response = recordRepository.getVehiclesByDriverId(driverId)
+            if (response.isSuccess) {
+                _vehiclesLiveData.value = listOfNotNull(response.getOrNull())
+            } else {
+                println("an error has occurred")
             }
         }
     }
+
 }

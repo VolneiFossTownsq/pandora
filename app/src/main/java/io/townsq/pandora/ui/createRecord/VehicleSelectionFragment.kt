@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
 import io.townsq.pandora.adapter.CreateRecordAdapter
+import io.townsq.pandora.data.models.Vehicle
 import io.townsq.pandora.databinding.FragmentVehicleSelectionBinding
 import io.townsq.pandora.ui.feed.FeedActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,8 +47,8 @@ class VehicleSelectionFragment : Fragment() {
     }
 
     fun setupBindings() {
-        recordViewModel.recordsLiveData.observe(viewLifecycleOwner) { records ->
-            createRecordAdapter?.setRecords(records)
+        recordViewModel.vehiclesLiveData.observe(viewLifecycleOwner) { records ->
+            setupAdapter(records)
         }
 
         recordViewModel.selectedItemPosition.observe(viewLifecycleOwner) { selectedPosition ->
@@ -63,12 +65,30 @@ class VehicleSelectionFragment : Fragment() {
         }
     }
 
-    private fun onClickToRecordType() {
-        findNavController().navigate(R.id.action_vehicleSelectionFragment_to_recordActionFragment)
+    private fun setupAdapter(vehicleList: List<Vehicle>) {
+        with(recyclerViewRecord) {
+            this?.setHasFixedSize(true)
+            this?.adapter = createRecordAdapter
+        }
+        createRecordAdapter?.setVehicleList(vehicleList)
     }
 
-    private fun onClickBackToFeed(){
+    private fun getVehicle() {
+        recordViewModel.setSelectedVehicle(createRecordAdapter?.getActualVehicle())
+    }
+
+    private fun onClickToRecordType() {
+        getVehicle()
+        if (recordViewModel.selectedVehicle.value == null) {
+            Toast.makeText(requireContext(), "Escolha uma opção!", Toast.LENGTH_SHORT).show()
+        } else {
+            findNavController().navigate(R.id.action_vehicleSelectionFragment_to_recordActionFragment)
+        }
+    }
+
+    private fun onClickBackToFeed() {
         val intent = Intent(requireContext(), FeedActivity::class.java)
         startActivity(intent)
+        activity?.finish()
     }
 }
