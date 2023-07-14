@@ -1,126 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_red"
     tools:context=".ui.feed.FeedFragment">
 
-    <TextView
-        android:id="@+id/titleApp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@color/light_red">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_search"
-        android:layoutDirection="rtl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleApp"
-        app:searchIcon="@drawable/ic_search" />
+        <TextView
+            android:id="@+id/titleApp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintEnd_toStartOf="@id/menuFeed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/maintenance"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <ImageView
+            android:id="@+id/menuFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            app:chipStartPadding="8dp"
-            app:chipEndPadding="8dp"
-            android:text="@string/action_maintence"
-            android:textColor="@color/white"
-            app:chipBackgroundColor="@color/rouge_red"
-            app:chipCornerRadius="4dp"
-            app:chipIcon="@drawable/ic_maintenance_white"
-            app:chipIconVisible="true"
-            app:ensureMinTouchTargetSize="true" />
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintBottom_toBottomOf="@+id/titleApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/titleApp"
+            app:layout_constraintTop_toTopOf="@+id/titleApp" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/shift"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_search"
+            android:layoutDirection="rtl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleApp"
+            app:searchIcon="@drawable/ic_search" />
+
+        <LinearLayout
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchView">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/maintenance"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/action_maintence"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/rouge_red"
+                app:chipCornerRadius="4dp"
+                app:chipEndPadding="8dp"
+                app:chipIcon="@drawable/ic_maintenance_white"
+                app:chipIconVisible="true"
+                app:chipStartPadding="8dp"
+                app:ensureMinTouchTargetSize="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/shift"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1"
+                android:text="@string/action_shift"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/rouge_red"
+                app:chipCornerRadius="4dp"
+                app:chipEndPadding="8dp"
+                app:chipIcon="@drawable/ic_shift_white"
+                app:chipIconVisible="true"
+                app:chipStartPadding="8dp"
+                app:ensureMinTouchTargetSize="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/gas"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1"
+                android:text="@string/action_gas"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/rouge_red"
+                app:chipCornerRadius="4dp"
+                app:chipEndPadding="8dp"
+                app:chipIcon="@drawable/ic_gas_station_white"
+                app:chipIconVisible="true"
+                app:chipStartPadding="8dp"
+                app:ensureMinTouchTargetSize="true" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+            tools:listitem="@layout/list_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/actionNewRecord"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            app:chipStartPadding="8dp"
-            app:chipEndPadding="8dp"
-            android:layout_weight="1"
-            android:text="@string/action_shift"
-            android:textColor="@color/white"
-            app:chipBackgroundColor="@color/rouge_red"
-            app:chipCornerRadius="4dp"
-            app:chipIcon="@drawable/ic_shift_white"
-            app:chipIconVisible="true"
-            app:ensureMinTouchTargetSize="true" />
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/rouge_red"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@android:color/white" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/gas"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            app:chipStartPadding="8dp"
-            app:chipEndPadding="8dp"
-            android:layout_weight="1"
-            android:text="@string/action_gas"
-            android:textColor="@color/white"
-            app:chipBackgroundColor="@color/rouge_red"
-            app:chipCornerRadius="4dp"
-            app:chipIcon="@drawable/ic_gas_station_white"
-            app:chipIconVisible="true"
-            app:ensureMinTouchTargetSize="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    <include
+        layout="@layout/drawer_feed"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-        tools:listitem="@layout/list_item" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/actionNewRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-        android:src="@drawable/ic_add"
-        android:backgroundTint="@color/rouge_red"
-        app:tint="@android:color/white"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
