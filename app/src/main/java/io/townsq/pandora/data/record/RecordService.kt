@@ -17,5 +17,4 @@ interface RecordService {
     @Headers("Content-Type: application/json")
     @POST("record")
     suspend fun createRecord(@Body recordData: CreateRecord): Response<Unit>
-
 }
