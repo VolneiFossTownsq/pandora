@@ -33,5 +33,4 @@ class RecordActivity : AppCompatActivity() {
     private fun getVehicles() {
         recordViewModel.getVehiclesByDriverId(intent.extras?.getString(ARG_DRIVER_ID).toString())
     }
-
 }
