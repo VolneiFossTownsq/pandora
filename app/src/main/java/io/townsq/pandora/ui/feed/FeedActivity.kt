@@ -21,7 +21,7 @@ class FeedActivity : AppCompatActivity() {
     private var binding: ActivityFeedBinding? = null
     private val feedViewModel: FeedViewModel by viewModel {
         parametersOf(
-            intent.extras?.getString(ARG_DRIVER_ID) ?: ""
+            intent.extras?.getString(ARG_DRIVER_ID)
         )
     }
     private val startActivityCallBack =
@@ -49,10 +49,10 @@ class FeedActivity : AppCompatActivity() {
 
     private fun setupViews() {
         newRecord?.setOnClickListener {
-            onFabClicked()
+            onNewRecord()
         }
     }
-    private fun onFabClicked() {
+    private fun onNewRecord() {
         val intent = Intent(this, RecordActivity::class.java)
         intent.putExtra(RecordActivity.ARG_DRIVER_ID, feedViewModel.getDriverId())
         startActivityCallBack.launch(intent)
