@@ -13,6 +13,5 @@ val recordListModule = module {
     factory { get<Retrofit>().create(FeedService::class.java) as FeedService }
     factory { FeedRemoteDataSource(get()) }
     factory { FeedRepository(get()) }
-    viewModel { FeedViewModel(get()) }
-    viewModel { RecordViewModel(get()) }
+    viewModel { (driverId: String) -> FeedViewModel(get(), driverId = driverId) }
 }

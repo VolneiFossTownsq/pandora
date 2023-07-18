@@ -9,6 +9,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecordActivity : AppCompatActivity() {
 
+    companion object {
+        const val ARG_DRIVER_ID = "driverId"
+    }
+
     private val recordViewModel: RecordViewModel by viewModel()
     private var binding: ActivityRecordBinding? = null
 
@@ -21,6 +25,13 @@ class RecordActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.containerRecord) as NavHostFragment
         val navigationController = navigationHostFragment.navController
 
+        getVehicles()
+
         navigationController.setGraph(R.navigation.nav_graph_create_record)
     }
+
+    private fun getVehicles() {
+        recordViewModel.getVehiclesByDriverId(intent.extras?.getString(ARG_DRIVER_ID).toString())
+    }
+
 }

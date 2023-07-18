@@ -111,16 +111,4 @@
         app:layout_constraintTop_toBottomOf="@+id/chipGroup"
         tools:listitem="@layout/list_item" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/actionNewRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-        android:src="@drawable/ic_add"
-        android:backgroundTint="@color/rouge_red"
-        app:tint="@android:color/white"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
