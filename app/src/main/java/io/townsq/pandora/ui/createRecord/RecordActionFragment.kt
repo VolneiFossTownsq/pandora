@@ -53,7 +53,6 @@ class RecordActionFragment : Fragment() {
         }
     }
 
-
     private fun setupView() {
         setupRecordTypeOptions()
 
@@ -62,7 +61,7 @@ class RecordActionFragment : Fragment() {
         }
 
         backToSelectVehicle?.setOnClickListener {
-            onBackToVehicleSelectionIcButtonClicked()
+            backToVehicleSelection()
         }
 
         optionMaintenance?.setOnClickListener {
@@ -81,7 +80,7 @@ class RecordActionFragment : Fragment() {
         }
     }
 
-    private fun onBackToVehicleSelectionIcButtonClicked() {
+    private fun backToVehicleSelection() {
         findNavController().popBackStack()
     }
 
@@ -92,7 +91,7 @@ class RecordActionFragment : Fragment() {
                 recordViewModel.postNewRecord()
             }
             null -> {
-                Toast.makeText(requireContext(), "Escolhe um card ai mano", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "choose a card", Toast.LENGTH_SHORT)
                     .show()
             }
             else -> {
@@ -102,7 +101,7 @@ class RecordActionFragment : Fragment() {
     }
     private fun postRecordIsSuccess(isSuccess: Boolean) {
         if (isSuccess) {
-            Toast.makeText(requireContext(), "Registro criado com sucesso!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Record created successfully!", Toast.LENGTH_SHORT).show()
             activity?.run {
                 setResult(Activity.RESULT_OK, Intent())
                 finish()
@@ -110,7 +109,7 @@ class RecordActionFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Falha ao criar registro, tente novamente mais tarde!",
+                "Failed to create record, please try again later!",
                 Toast.LENGTH_LONG
             ).show()
         }

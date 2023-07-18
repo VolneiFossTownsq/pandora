@@ -8,27 +8,19 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.data.models.Record
 import io.townsq.pandora.data.models.Vehicle
-
 
 class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
 
-    private var recordList = listOf<Record>()
     private var selectedItemPosition = -1
     private var vehicleList: List<Vehicle> = listOf()
     private var actualVehicle: Vehicle? = null
+
     fun setVehicleList(vehicleList: List<Vehicle>) {
         this.vehicleList = vehicleList
     }
     fun getActualVehicle(): Vehicle? {
         return actualVehicle
-    }
-
-
-    fun setRecords(recordList: List<Record>) {
-        this.recordList = recordList
-        notifyDataSetChanged()
     }
 
     fun updateSelectedItemPosition(position: Int) {
@@ -41,10 +33,10 @@ class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecor
         return CreateRecordViewHolder(itemView)
     }
 
-    override fun getItemCount() = recordList.size
+    override fun getItemCount() = vehicleList.size
 
     override fun onBindViewHolder(holder: CreateRecordViewHolder, position: Int) {
-        val currentItem = recordList[position]
+        val currentItem = vehicleList[position]
         holder.bind(currentItem, position, selectedItemPosition)
     }
 
@@ -54,14 +46,15 @@ class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecor
         private val vehicleName: TextView = itemView.findViewById(R.id.vehicleName)
         private val licensePlate: TextView = itemView.findViewById(R.id.licensePlate)
 
-        fun bind(record: Record, position: Int, selectedItemPosition: Int) {
-            vehicleName.text = record.vehicle.name
-            licensePlate.text = record.vehicle.licensePlate
+        fun bind(vehicle: Vehicle, position: Int, selectedItemPosition: Int) {
+            vehicleName.text = vehicle.name
+            licensePlate.text = vehicle.licensePlate
 
             vehicleSelect.isChecked = position == selectedItemPosition
 
             vehicleSelect.setOnClickListener {
                 updateSelectedItemPosition(position)
+                actualVehicle = vehicle
             }
 
             vehicleSelected.isVisible = position == selectedItemPosition
