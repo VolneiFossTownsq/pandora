@@ -9,12 +9,12 @@ class RecordRemoteDataSource(private val  recordService: RecordService) {
     suspend fun getVehiclesByDriverId(driverId: String): Result<Vehicle?> {
         return try {
             val response = recordService.getVehiclesByDriverId(driverId)
-            if (response.isSuccessful) {
+            if (response.isSuccessful){
                 Result.success(response.body())
-            } else {
+            }else{
                 throw IOException()
             }
-        } catch (exception: Exception) {
+        }catch (exception: Exception){
             Result.failure(IOException("An error occurred while fetching your data"))
         }
     }

@@ -11,7 +11,9 @@ import io.townsq.pandora.R
 import io.townsq.pandora.data.models.Record
 import io.townsq.pandora.data.models.Vehicle
 
+
 class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
+
     private var recordList = listOf<Record>()
     private var selectedItemPosition = -1
     private var vehicleList: List<Vehicle> = listOf()
