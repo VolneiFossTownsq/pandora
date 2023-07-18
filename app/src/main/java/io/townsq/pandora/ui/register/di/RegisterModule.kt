@@ -8,7 +8,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-val registeModule = module {
+val registerModule = module {
 
     factory { get<Retrofit>().create(RegisterService::class.java) as RegisterService }
     factory { RegisterRemoteDataSource(get()) }
