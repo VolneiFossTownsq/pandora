@@ -1,5 +1,6 @@
 package io.townsq.pandora.ui.feed
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.townsq.pandora.adapter.RecordAdapter
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
+import io.townsq.pandora.ui.recordDetails.RecordDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class FeedFragment : Fragment() {
@@ -19,12 +21,11 @@ class FeedFragment : Fragment() {
     private var binding: FragmentFeedBinding? = null
     private val feedViewModel: FeedViewModel by activityViewModel()
     private var recyclerView: RecyclerView? = null
-    private var recordAdapter: RecordAdapter = RecordAdapter()
+    private var recordAdapter: RecordAdapter = RecordAdapter(::navigateToDetails)
     private var searchView: SearchView? = null
     private var maintenanceButton: Chip? = null
     private var shiftButton: Chip? = null
     private var gasButton: Chip? = null
-    private var newRecord: FloatingActionButton? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +46,12 @@ class FeedFragment : Fragment() {
         setupViews()
 
         return binding?.root
+    }
+
+    private fun navigateToDetails(recordId: String) {
+        val intent = Intent(requireContext(), RecordDetailsActivity::class.java)
+        intent.putExtra("recordId", recordId)
+        startActivity(intent)
     }
 
     private fun setupViews() {
