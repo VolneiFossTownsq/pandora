@@ -35,7 +35,7 @@ class RecordViewModel(private val recordRepository: RecordRepository) : ViewMode
     fun getVehiclesByDriverId(driverId: String) {
         viewModelScope.launch {
             val response = recordRepository.getVehiclesByDriverId(driverId)
-            println(response)
+
             if (response.isSuccess) {
                 _vehicleList.value = listOf(response.getOrNull()!!)
             } else {

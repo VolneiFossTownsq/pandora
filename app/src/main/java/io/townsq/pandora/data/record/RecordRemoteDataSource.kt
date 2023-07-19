@@ -10,7 +10,7 @@ class RecordRemoteDataSource(private val recordService: RecordService) {
     suspend fun getVehiclesByDriverId(driverId: String): Result<Vehicle?> {
         return try {
             val response = recordService.getVehiclesByDriverId(driverId)
-            Log.d("URL", response.raw().request().url().toString())
+
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {

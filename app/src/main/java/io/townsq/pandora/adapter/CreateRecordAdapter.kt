@@ -10,17 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
 import io.townsq.pandora.data.models.Vehicle
 
-class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
+class CreateRecordAdapter(private val onVehicleSelected: (Vehicle) -> Unit) :
+    RecyclerView.Adapter<CreateRecordAdapter.CreateRecordViewHolder>() {
 
     private var selectedItemPosition = -1
     private var vehicleList: List<Vehicle> = listOf()
-    private var actualVehicle: Vehicle? = null
+
 
     fun setVehicleList(vehicleList: List<Vehicle>) {
         this.vehicleList = vehicleList
-    }
-    fun getActualVehicle(): Vehicle? {
-        return actualVehicle
     }
 
     fun updateSelectedItemPosition(position: Int) {
@@ -29,7 +27,8 @@ class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecor
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreateRecordViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_item_record_vehicle, parent, false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.card_item_record_vehicle, parent, false)
         return CreateRecordViewHolder(itemView)
     }
 
@@ -54,7 +53,7 @@ class CreateRecordAdapter : RecyclerView.Adapter<CreateRecordAdapter.CreateRecor
 
             vehicleSelect.setOnClickListener {
                 updateSelectedItemPosition(position)
-                actualVehicle = vehicle
+                onVehicleSelected(vehicle)
             }
 
             vehicleSelected.isVisible = position == selectedItemPosition
