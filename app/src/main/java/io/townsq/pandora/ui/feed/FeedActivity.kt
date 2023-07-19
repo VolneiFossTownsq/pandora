@@ -60,5 +60,4 @@ class FeedActivity : AppCompatActivity() {
         intent.putExtra(RecordActivity.ARG_DRIVER_ID, feedViewModel.getDriverId())
         startActivityCallBack.launch(intent)
     }
-
 }
