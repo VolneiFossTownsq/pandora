@@ -12,7 +12,8 @@ import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.ListItemBinding
 import io.townsq.pandora.utils.DateFormat
 
-class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
+class RecordAdapter(private val onRecordCardClicked: (String) -> Unit) :
+    RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
     private var binding: ListItemBinding? = null
     private var recordList: List<Record> = listOf()
@@ -38,7 +39,7 @@ class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
     override fun onBindViewHolder(holder: RegisterViewHolder, position: Int) {
         val currentItem = filteredList[position]
-        holder.bind(currentItem)
+        holder.bind(currentItem, onRecordCardClicked)
     }
 
     inner class RegisterViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
@@ -48,7 +49,7 @@ class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
         private var infoVehicle: TextView? = binding?.infoVehicle
         private var infoDriver: TextView? = binding?.infoDriver
 
-        fun bind(record: Record) {
+        fun bind(record: Record, onRecordCardClicked: (String) -> Unit) {
 
             val dateString = record.recordDate
             val formatter = DateFormat()
@@ -56,8 +57,13 @@ class RecordAdapter : RecyclerView.Adapter<RecordAdapter.RegisterViewHolder>() {
 
             imgRegister?.setImageResource(iconForEachRecordType(record.recordType))
             dateRegister?.text = date
-            infoDriver?.text = "${record.vehicle.driver.firstName} " + "${record.vehicle.driver.lastName}"
+            infoDriver?.text =
+                "${record.vehicle.driver.firstName} " + "${record.vehicle.driver.lastName}"
             infoVehicle?.text = record.vehicle.name
+
+            itemView.setOnClickListener {
+                onRecordCardClicked(record.id)
+            }
         }
 
         private fun iconForEachRecordType(recordType: RecordType): Int {
