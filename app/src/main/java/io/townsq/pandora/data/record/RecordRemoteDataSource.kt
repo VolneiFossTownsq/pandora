@@ -14,10 +14,11 @@ class RecordRemoteDataSource(private val recordService: RecordService) {
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {
-                throw IOException()
+                Result.failure(IOException("An error occurred while fetching your data"))
             }
         } catch (exception: Exception) {
-            Result.failure(IOException("An error occurred while fetching your data"))
+
+            throw IOException()
         }
     }
 
@@ -28,10 +29,11 @@ class RecordRemoteDataSource(private val recordService: RecordService) {
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {
-                throw IOException()
+                Result.failure(IOException("Is not possible to create a new record"))
             }
         } catch (exception: Exception) {
-            Result.failure(IOException("Is not possible to create a new record"))
+
+            throw IOException()
         }
     }
 }

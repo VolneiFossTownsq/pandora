@@ -13,10 +13,10 @@ class FeedRemoteDataSource(private val feedService: FeedService) {
                     it.vehicle.driver.id == driverId
                 }.orEmpty())
             } else {
-                throw IOException()
+                Result.failure(IOException("An error occurred while fetching your data"))
             }
         } catch (exception: Exception) {
-            Result.failure(IOException("An error occurred while fetching your data"))
+            throw IOException()
         }
     }
 
