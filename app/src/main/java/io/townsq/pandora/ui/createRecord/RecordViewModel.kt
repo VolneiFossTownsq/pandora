@@ -35,9 +35,14 @@ class RecordViewModel(private val recordRepository: RecordRepository) : ViewMode
     fun getVehiclesByDriverId(driverId: String) {
         viewModelScope.launch {
             val response = recordRepository.getVehiclesByDriverId(driverId)
-
+            
             if (response.isSuccess) {
-                _vehicleList.value = listOf(response.getOrNull()!!)
+                val vehicle = response.getOrNull()
+                val vehicleList: MutableList<Vehicle> = mutableListOf()
+                vehicle?.let {
+                    vehicleList.add(vehicle)
+                }
+                _vehicleList.value = vehicleList
             } else {
                 _vehicleList.value = listOf()
             }
