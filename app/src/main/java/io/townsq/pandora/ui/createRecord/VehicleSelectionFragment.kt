@@ -16,14 +16,16 @@ import io.townsq.pandora.data.models.Vehicle
 import io.townsq.pandora.databinding.FragmentVehicleSelectionBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class VehicleSelectionFragment : Fragment() {
+class VehicleSelectionFragment() : Fragment() {
 
     private var binding: FragmentVehicleSelectionBinding? = null
     private var continueToRecordType: Button? = null
     private var backToFeed: ImageView? = null
     private val recordViewModel: RecordViewModel by activityViewModel()
     private var recyclerViewRecord: RecyclerView? = null
-    private var createRecordAdapter: CreateRecordAdapter = CreateRecordAdapter()
+    private var createRecordAdapter: CreateRecordAdapter = CreateRecordAdapter { vehicle ->
+        recordViewModel.setSelectedVehicle(vehicle)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,12 +68,7 @@ class VehicleSelectionFragment : Fragment() {
         createRecordAdapter.setVehicleList(vehicleList)
     }
 
-    private fun getVehicle() {
-        recordViewModel.setSelectedVehicle(createRecordAdapter.getActualVehicle())
-    }
-
     private fun onGoToRecordType() {
-        getVehicle()
         if (recordViewModel.selectedVehicle.value == null) {
             Toast.makeText(requireContext(), "Escolha uma opção para continuar", Toast.LENGTH_SHORT)
                 .show()

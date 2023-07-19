@@ -18,6 +18,7 @@ class FeedActivity : AppCompatActivity() {
     companion object {
         const val ARG_DRIVER_ID = "driverId"
     }
+
     private var binding: ActivityFeedBinding? = null
     private val feedViewModel: FeedViewModel by viewModel {
         parametersOf(
@@ -25,6 +26,7 @@ class FeedActivity : AppCompatActivity() {
         )
     }
     private val startActivityCallBack =
+
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 feedViewModel.fetchRecords()
@@ -52,6 +54,7 @@ class FeedActivity : AppCompatActivity() {
             onNewRecord()
         }
     }
+
     private fun onNewRecord() {
         val intent = Intent(this, RecordActivity::class.java)
         intent.putExtra(RecordActivity.ARG_DRIVER_ID, feedViewModel.getDriverId())
