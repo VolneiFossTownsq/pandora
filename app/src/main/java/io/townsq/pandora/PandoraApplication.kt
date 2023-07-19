@@ -5,6 +5,7 @@ import io.townsq.pandora.networkModule.networkModule
 import io.townsq.pandora.ui.createRecord.di.createRecordModule
 import io.townsq.pandora.ui.feed.di.recordListModule
 import io.townsq.pandora.ui.login.di.loginModule
+import io.townsq.pandora.ui.recordDetails.di.recordDetailsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -21,6 +22,7 @@ class PandoraApplication : Application() {
                     recordListModule,
                     loginModule,
                     createRecordModule,
+                    recordDetailsModule,
                     networkModule,
                 )
             )
