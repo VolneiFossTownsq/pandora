@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.ui.createRecord.adapter.CreateRecordAdapter
 import io.townsq.pandora.data.models.Vehicle
 import io.townsq.pandora.databinding.FragmentVehicleSelectionBinding
+import io.townsq.pandora.ui.createRecord.adapter.CreateRecordAdapter
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class VehicleSelectionFragment() : Fragment() {
@@ -70,7 +70,7 @@ class VehicleSelectionFragment() : Fragment() {
 
     private fun onGoToRecordType() {
         if (recordViewModel.selectedVehicle.value == null) {
-            Toast.makeText(requireContext(), "Escolha uma opção para continuar", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), "to continue, choose an option", Toast.LENGTH_SHORT)
                 .show()
         } else {
             findNavController().navigate(R.id.action_vehicleSelectionFragment_to_recordActionFragment)
