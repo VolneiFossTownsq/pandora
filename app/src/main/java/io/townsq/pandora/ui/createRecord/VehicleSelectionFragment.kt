@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.townsq.pandora.R
-import io.townsq.pandora.adapter.CreateRecordAdapter
+import io.townsq.pandora.ui.createRecord.adapter.CreateRecordAdapter
 import io.townsq.pandora.data.models.Vehicle
 import io.townsq.pandora.databinding.FragmentVehicleSelectionBinding
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
