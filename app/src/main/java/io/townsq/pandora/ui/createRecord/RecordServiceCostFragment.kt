@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import io.townsq.pandora.R
@@ -51,36 +52,29 @@ class RecordServiceCostFragment : Fragment() {
             findNavController().navigate(R.id.action_recordServiceCostFragment_to_recordActionFragment)
         }
         goToFeed?.setOnClickListener {
-            Toast.makeText(requireContext(), "Registro criado com sucesso!", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), "Record successfully created!", Toast.LENGTH_SHORT)
                 .show()
             finishRecord()
         }
     }
+
     private fun finishRecord() {
         val serviceCostValue = serviceCost?.text.toString()
-        if (serviceCostValue != null && serviceCostValue.isNotEmpty()) {
-            val serviceCostFloat = serviceCostValue.toFloatOrNull()
-            if (serviceCostFloat != null && serviceCostFloat > 0) {
-                recordViewModel.postNewRecord(serviceCostFloat)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Digite um custo válido para o serviço!",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+        if (serviceCostValue.isNotEmpty()) {
+            recordViewModel.postNewRecord(serviceCostValue.toFloat())
         } else {
             Toast.makeText(
                 requireContext(),
-                "Digite o custo que você teve com o serviço!",
+                "inform the cost of the service!",
                 Toast.LENGTH_SHORT
             ).show()
         }
     }
 
-    private fun postRecordIsSuccess(isSuccess: Boolean) {
+    private fun postRecordIsSuccess(isSuccess: Boolean,) {
         if (isSuccess) {
-            Toast.makeText(requireContext(), "Registro criado com sucesso!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Record successfully created!", Toast.LENGTH_SHORT).show()
+
             activity?.run {
                 setResult(Activity.RESULT_OK, Intent())
                 finish()
@@ -88,7 +82,7 @@ class RecordServiceCostFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Falha ao criar registro, tente novamente mais tarde!",
+                "Registration failed, try again later!",
                 Toast.LENGTH_LONG
             ).show()
         }
