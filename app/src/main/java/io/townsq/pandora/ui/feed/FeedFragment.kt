@@ -9,10 +9,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import io.townsq.pandora.adapter.RecordAdapter
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
+import io.townsq.pandora.ui.feed.adapter.RecordAdapter
 import io.townsq.pandora.ui.recordDetails.RecordDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
