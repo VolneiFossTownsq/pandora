@@ -1,4 +1,4 @@
-package io.townsq.pandora.adapter
+package io.townsq.pandora.ui.createRecord.adapter
 
 import android.view.LayoutInflater
 import android.view.View
