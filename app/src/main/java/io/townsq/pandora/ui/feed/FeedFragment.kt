@@ -5,10 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import io.townsq.pandora.R
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
 import io.townsq.pandora.ui.feed.adapter.RecordAdapter
@@ -25,6 +29,7 @@ class FeedFragment : Fragment() {
     private var maintenanceButton: Chip? = null
     private var shiftButton: Chip? = null
     private var gasButton: Chip? = null
+    private var menu: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +46,8 @@ class FeedFragment : Fragment() {
         gasButton = binding?.gas
         searchView = binding?.searchView
 
+        menu = binding?.menuFeed
+
         setupBindings()
         setupViews()
 
@@ -56,6 +63,7 @@ class FeedFragment : Fragment() {
     private fun setupViews() {
         onClickFilter()
         setupSearchView()
+        openMenu()
     }
 
     private fun setupBindings() {
@@ -108,4 +116,12 @@ class FeedFragment : Fragment() {
             }
         })
     }
+
+    private fun openMenu() {
+        menu?.setOnClickListener {
+            val drawerLayout: DrawerLayout = requireActivity().findViewById(R.id.drawerLayout)
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
+    }
+
 }
