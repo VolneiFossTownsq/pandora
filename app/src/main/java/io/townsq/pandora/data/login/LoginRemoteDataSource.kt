@@ -16,7 +16,7 @@ class LoginRemoteDataSource(private val loginService: LoginService) {
                 Result.failure(LoginException("Wrong user info"))
             }
         } catch (e: IOException) {
-            Result.failure(IOException("Error on postLogin method"))
+            throw IOException()
         }
     }
 

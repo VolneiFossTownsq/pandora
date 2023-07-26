@@ -4,38 +4,62 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.townsq.pandora.data.feed.FeedRepository
-import io.townsq.pandora.data.models.Record
+import io.townsq.pandora.data.models.CreateRecord
+import io.townsq.pandora.data.models.RecordType
+import io.townsq.pandora.data.models.Vehicle
+import io.townsq.pandora.data.record.RecordRepository
 import kotlinx.coroutines.launch
 
-class RecordViewModel(private val recordRepository: FeedRepository) : ViewModel() {
+class RecordViewModel(private val recordRepository: RecordRepository) : ViewModel() {
 
-    private val _recordsLiveData = MutableLiveData<List<Record>>()
-    val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
+    private val _vehicleList: MutableLiveData<List<Vehicle>> = MutableLiveData()
+    val vehicleList: LiveData<List<Vehicle>> = _vehicleList
 
-    private val _selectedItemPosition = MutableLiveData<Int>()
-    val selectedItemPosition: LiveData<Int> = _selectedItemPosition
+    private val _selectedVehicle: MutableLiveData<Vehicle?> = MutableLiveData()
+    val selectedVehicle: LiveData<Vehicle?> = _selectedVehicle
 
-    init {
-        fetchRecords()
+    private val _selectedRecordType: MutableLiveData<RecordType?> = MutableLiveData()
+    val selectedRecordType: LiveData<RecordType?> = _selectedRecordType
+
+    private val _postIsSuccess: MutableLiveData<Boolean> = MutableLiveData()
+    val postIsSuccess: LiveData<Boolean> = _postIsSuccess
+
+    fun setSelectedVehicle(vehicle: Vehicle?) {
+        _selectedVehicle.value = vehicle
     }
 
-    fun updateSelectedItemPosition(position: Int) {
-        val currentSelectedPosition = _selectedItemPosition.value
-        _selectedItemPosition.value = if (currentSelectedPosition == position) {
-            -1
-        } else {
-            position
+    fun setSelectedRecordType(recordType: RecordType?) {
+        _selectedRecordType.value = recordType
+    }
+
+    fun getVehiclesByDriverId(driverId: String) {
+        viewModelScope.launch {
+            val response = recordRepository.getVehiclesByDriverId(driverId)
+            
+            if (response.isSuccess) {
+                val vehicle = response.getOrNull()
+                val vehicleList: MutableList<Vehicle> = mutableListOf()
+                vehicle?.let {
+                    vehicleList.add(vehicle)
+                }
+                _vehicleList.value = vehicleList
+            } else {
+                _vehicleList.value = listOf()
+            }
         }
     }
 
-    fun fetchRecords(){
+    fun postNewRecord(serviceCost: Float = 0.toFloat()) {
         viewModelScope.launch {
-            val recordsResult = recordRepository.getRecords()
-            if (recordsResult.isSuccess) {
-                _recordsLiveData.value = recordsResult.getOrNull()
-                _selectedItemPosition.value = -1
-            }
+            val response = recordRepository.postCreateRecord(
+                CreateRecord(
+                    selectedRecordType.value?.queryValue?.uppercase().toString(),
+                    selectedVehicle.value?.id.toString(),
+                    System.currentTimeMillis().toString(),
+                    serviceCost
+                )
+            )
+            _postIsSuccess.value = response.isSuccess
         }
     }
 }

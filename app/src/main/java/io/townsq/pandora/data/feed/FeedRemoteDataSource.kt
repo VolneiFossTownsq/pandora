@@ -5,20 +5,18 @@ import java.io.IOException
 
 class FeedRemoteDataSource(private val feedService: FeedService) {
 
-    suspend fun getRecords(recordType: String? = null): Result<List<Record>> {
+    suspend fun getRecords(driverId: String, recordType: String? = null): Result<List<Record>> {
         return try {
-            val response = if (recordType != null) {
-                feedService.getRecords(recordType)
-            } else {
-                feedService.getRecords()
-            }
+            val response = feedService.getRecords(driverId = driverId, recordType = recordType)
             if (response.isSuccessful) {
-                Result.success(response.body().orEmpty())
+                Result.success(response.body()?.filter {
+                    it.vehicle.driver.id == driverId
+                }.orEmpty())
             } else {
-                Result.failure(IOException("Error on get method"))
+                Result.failure(IOException("An error occurred while fetching your data"))
             }
-        } catch (e: IOException) {
-            Result.failure(IOException("Error on get method"))
+        } catch (exception: Exception) {
+            throw IOException()
         }
     }
 

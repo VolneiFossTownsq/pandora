@@ -1,11 +1,14 @@
 package io.townsq.pandora.ui.createRecord
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,10 +16,11 @@ import io.townsq.pandora.R
 import io.townsq.pandora.components.CardPandora
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentRecordActionBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class RecordActionFragment : Fragment() {
 
+    private val recordViewModel: RecordViewModel by activityViewModel()
     private var selectedCustomView: CardPandora? = null
     private var optionMaintenance: CardPandora? = null
     private var optionShift: CardPandora? = null
@@ -43,36 +47,72 @@ class RecordActionFragment : Fragment() {
         return binding?.root
     }
 
+    private fun setupBindings() {
+        recordViewModel.postIsSuccess.observe(viewLifecycleOwner) {
+            postRecordIsSuccess(it)
+        }
+    }
+
     private fun setupView() {
         setupRecordTypeOptions()
 
         actionCreate?.setOnClickListener {
-            onClickToServiceCost()
+            onButtonFinalizeRecordCreateClicked()
         }
 
         backToSelectVehicle?.setOnClickListener {
-            backToSelectVehicle()
+            backToVehicleSelection()
         }
 
         optionMaintenance?.setOnClickListener {
+            recordViewModel.setSelectedRecordType(RecordType.MAINTENANCE)
             onCustomViewClicked(optionMaintenance)
         }
 
         optionShift?.setOnClickListener {
+            recordViewModel.setSelectedRecordType(RecordType.SHIFT)
             onCustomViewClicked(optionShift)
         }
 
         optionGas?.setOnClickListener {
+            recordViewModel.setSelectedRecordType(RecordType.GAS)
             onCustomViewClicked(optionGas)
         }
     }
 
-    private fun onClickToServiceCost() {
-        findNavController().navigate(R.id.action_recordActionFragment_to_recordServiceCostFragment)
+    private fun backToVehicleSelection() {
+        findNavController().popBackStack()
     }
 
-    private fun backToSelectVehicle() {
-        findNavController().navigate(R.id.action_recordActionFragment_to_vehicleSelectionFragment)
+    private fun onButtonFinalizeRecordCreateClicked() {
+        when (recordViewModel.selectedRecordType.value) {
+            RecordType.SHIFT -> {
+                activity?.finish()
+                recordViewModel.postNewRecord()
+            }
+            null -> {
+                Toast.makeText(requireContext(), "choose a card", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            else -> {
+                findNavController().navigate(R.id.action_recordActionFragment_to_recordServiceCostFragment)
+            }
+        }
+    }
+    private fun postRecordIsSuccess(isSuccess: Boolean) {
+        if (isSuccess) {
+            Toast.makeText(requireContext(), "Record created successfully!", Toast.LENGTH_SHORT).show()
+            activity?.run {
+                setResult(Activity.RESULT_OK, Intent())
+                finish()
+            }
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Failed to create record, please try again later!",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun onCustomViewClicked(customView: CardPandora?) {

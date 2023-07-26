@@ -7,6 +7,9 @@ import retrofit2.http.Query
 
 interface FeedService {
     @GET("record")
-    suspend fun getRecords(@Query("recordType") recordType: String? = null): Response<List<Record>>
+    suspend fun getRecords(
+        @Query("driverId") driverId: String,
+        @Query("recordType") recordType: String? = null
+    ): Response<List<Record>>
 
 }
