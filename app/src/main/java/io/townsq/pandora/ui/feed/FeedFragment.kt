@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import io.townsq.pandora.R
 import io.townsq.pandora.data.models.RecordType
 import io.townsq.pandora.databinding.FragmentFeedBinding
 import io.townsq.pandora.ui.feed.adapter.RecordAdapter
+import io.townsq.pandora.ui.login.AuthenticationActivity
 import io.townsq.pandora.ui.recordDetails.RecordDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -30,6 +32,7 @@ class FeedFragment : Fragment() {
     private var shiftButton: Chip? = null
     private var gasButton: Chip? = null
     private var menu: ImageView? = null
+    private var logout: CardView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +50,7 @@ class FeedFragment : Fragment() {
         searchView = binding?.searchView
 
         menu = binding?.menuFeed
+        logout = binding?.drawerMenu?.logout
 
         setupBindings()
         setupViews()
@@ -64,6 +68,7 @@ class FeedFragment : Fragment() {
         onClickFilter()
         setupSearchView()
         openMenu()
+        logout()
     }
 
     private fun setupBindings() {
@@ -124,4 +129,11 @@ class FeedFragment : Fragment() {
         }
     }
 
+    private fun logout(){
+        logout?.setOnClickListener{
+            val intent = Intent(activity, AuthenticationActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+    }
 }

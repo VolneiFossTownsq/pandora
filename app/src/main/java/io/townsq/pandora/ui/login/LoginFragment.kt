@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import io.townsq.pandora.data.models.Driver
 import io.townsq.pandora.data.models.Login
 import io.townsq.pandora.databinding.FragmentLoginBinding
 import io.townsq.pandora.ui.feed.FeedActivity
+import io.townsq.pandora.ui.register.RegisterActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
@@ -21,6 +23,7 @@ class LoginFragment : Fragment() {
     private var navigateToFeed: Button? = null
     private var userName: EditText? = null
     private var password: EditText? = null
+    private var newAccount: TextView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +33,9 @@ class LoginFragment : Fragment() {
         userName = binding?.userName
         password = binding?.password
         navigateToFeed = binding?.login
+
+        newAccount = binding?.createAccount
+
         setupViews()
         setupBindings()
         return binding?.root
@@ -45,7 +51,10 @@ class LoginFragment : Fragment() {
                 authenticationViewModel.sendLogin(login)
             }
         }
+
+        newAccount()
     }
+
     private fun setupBindings() {
         authenticationViewModel.user.observe(viewLifecycleOwner) { user ->
             navigateToFeed(user)
@@ -54,6 +63,7 @@ class LoginFragment : Fragment() {
             navigateToFeed?.isEnabled = !loading
         }
     }
+
     private fun navigateToFeed(user: Driver?) {
         user?.let { driver ->
             val username = userName?.text.toString()
@@ -63,6 +73,14 @@ class LoginFragment : Fragment() {
                 startActivity(intent)
                 requireActivity().finish()
             }
+        }
+    }
+
+    private fun newAccount() {
+        newAccount?.setOnClickListener {
+            val intent = Intent(activity, RegisterActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 }
