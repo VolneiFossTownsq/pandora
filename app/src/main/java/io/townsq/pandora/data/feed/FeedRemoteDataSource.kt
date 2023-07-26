@@ -9,9 +9,7 @@ class FeedRemoteDataSource(private val feedService: FeedService) {
         return try {
             val response = feedService.getRecords(driverId = driverId, recordType = recordType)
             if (response.isSuccessful) {
-                Result.success(response.body()?.filter {
-                    it.vehicle.driver.id == driverId
-                }.orEmpty())
+                Result.success(response.body().orEmpty())
             } else {
                 Result.failure(IOException("An error occurred while fetching your data"))
             }
@@ -19,5 +17,4 @@ class FeedRemoteDataSource(private val feedService: FeedService) {
             throw IOException()
         }
     }
-
 }

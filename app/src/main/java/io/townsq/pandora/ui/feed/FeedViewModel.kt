@@ -9,7 +9,8 @@ import io.townsq.pandora.data.models.Record
 import io.townsq.pandora.data.models.RecordType
 import kotlinx.coroutines.launch
 
-class FeedViewModel(private val feedRepository: FeedRepository, private val driverId: String) : ViewModel() {
+class FeedViewModel(private val feedRepository: FeedRepository, private val driverId: String) :
+    ViewModel() {
 
     private val _recordsLiveData = MutableLiveData<List<Record>>()
     val recordsLiveData: LiveData<List<Record>> = _recordsLiveData
@@ -50,7 +51,8 @@ class FeedViewModel(private val feedRepository: FeedRepository, private val driv
     fun filterRecord(query: String) {
         val filteredList = recordsLiveData.value?.filter { record ->
             val nameMatchesQuery = record.vehicle.name.contains(query, ignoreCase = true)
-            val firstNameMatchesQuery = record.vehicle.driver.firstName.contains(query, ignoreCase = true)
+            val firstNameMatchesQuery =
+                record.vehicle.driver.firstName.contains(query, ignoreCase = true)
 
             nameMatchesQuery || firstNameMatchesQuery
         }?.filter { record ->
@@ -64,7 +66,9 @@ class FeedViewModel(private val feedRepository: FeedRepository, private val driv
         viewModelScope.launch {
             val response = feedRepository.getRecords(driverId, recordType)
             if (response.isSuccess) {
-                _recordsLiveData.value = response.getOrDefault(listOf())
+                _recordsLiveData.value = response.getOrDefault(listOf()).filter {
+                    it.vehicle.driver.id == driverId
+                }
             } else {
                 _recordsLiveData.value = listOf()
             }
